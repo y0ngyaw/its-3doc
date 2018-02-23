@@ -1,0 +1,32 @@
+<div>
+	Leader Panel
+</div>
+<div class="right panel">
+	<div class="pending">
+		<% @pending_lists.each do |pending| %>
+			<div class="participant_name">
+				<%= pending.participant.name %>
+				<%= pending.participant.email %>
+				Requested <%= time_ago_in_words(pending.created_at) %> ago.
+			</div>
+			<% if pending? pending %>
+				<div class="accept">
+					<%= render 'team_members/accept_request', pending_id: pending.id %>
+				</div>
+				<div class="deny">
+					<%= render 'team_members/deny_request', pending_id: pending.id %>
+				</div>
+			<% else %>
+				<div class="status">
+					<% if accepted? pending %>
+						Pending Status: Accpeted
+					<% elsif denied? pending %>
+						Pending Status: Denied
+					<% elsif taken? pending %>
+						This user has joined other group.
+					<% end %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>

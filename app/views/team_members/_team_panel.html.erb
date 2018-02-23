@@ -1,0 +1,48 @@
+<div>
+	Team Panel
+</div>
+
+<% if is_leader? %>
+	<div class="proposal_title">
+		Title: <%= current_participant.proposal.title %>
+	</div>
+	<div class="team_member">
+		<div class="leader">
+			Leader: <%= current_participant.name %>
+		</div>
+		<% all_team_members(current_participant.proposal).each do |tm| %>
+			<div class="member">
+				<%= tm.participant.name %>
+				<% if inactive_member? tm %>
+					<div>
+						This member would wish to leave your team.
+						<%= render 'team_members/acknowledge', team_member_id: tm.id %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+
+<% else %>
+	<div class="proposal_title">
+		Title: <%= current_participant.team_member.proposal.title %>
+	</div>
+	<div class="team_member">
+		<div class="leader">
+			Leader: <%= proposal_leader(current_participant.team_member.proposal).name %>
+		</div>
+		<% all_team_members(current_participant.team_member.proposal).each do |tm| %>
+			<div class="member">
+				<%= tm.participant.name %>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="leave">
+		<% if inactive_member? current_participant.team_member %>
+			<div>Your leaving request has sent to team leader.</div>
+		<% else %>
+			<%= render 'team_members/leave' %>
+		<% end %>
+	</div>
+<% end %>

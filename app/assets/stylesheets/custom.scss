@@ -1,0 +1,21 @@
+* {
+	overflow: hidden;
+	margin: 0 auto;
+	width: auto;
+	text-align: center;
+	text-decoration: none;
+}
+
+.navbar {
+	background-color: #fff;
+	color: #fff;
+	overflow: hidden;
+}
+
+.nav::before {
+	content: '';
+	background-color: #526E86;
+	display: block;
+	width: 100%;
+	height: 5px;
+}

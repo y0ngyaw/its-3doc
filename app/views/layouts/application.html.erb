@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Its3doc</title>
+    <%= favicon_link_tag '3doc_logo.ico' %>
+    <title>ITS-3doc</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,16 @@
   </head>
 
   <body>
+  	<div class="navbar">
+  	  <div class="nav">
+  	    <div class="logo">
+  	      <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "logo-img" %>
+  	    </div>
+  	    <% if logged_in? %>
+  	      <%= link_to 'Logout', logout_path, method: 'delete', class: 'link nav-selection' %>
+  	    <% end %>
+  	  </div>
+  	</div>
     <%= yield %>
   </body>
 </html>

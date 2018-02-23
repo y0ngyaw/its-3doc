@@ -1,0 +1,27 @@
+<div>
+	Your Joining Request
+</div>
+<div class="right panel">
+	<div class="pending">
+		
+		<% @pending_lists.each do |pending| %>
+		<% print @pending_lists.size %>
+			<div>
+				<% print pending.proposal.nil? %>
+				<% unless taken? pending %>
+					<%= pending.proposal.title %>
+					<%= pending.proposal.description %>
+					You requested to join <%= time_ago_in_words(pending.created_at) %> ago.
+
+					<% if accepted? pending %>
+						Pending Status: Accepted
+					<% elsif denied? pending %>
+						Pending Status: Denied
+					<% elsif pending? pending %>
+						<%= render 'pendings/cancel_request', proposal_id: pending.proposal_id %>
+					<% end %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>

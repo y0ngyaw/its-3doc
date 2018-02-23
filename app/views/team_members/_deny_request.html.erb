@@ -1,0 +1,4 @@
+<%= form_for current_participant.proposal.pendings.find(pending_id), url: team_member_path(pending_id),
+	html: {method: :delete}, remote: true do |f| %>
+	<%= f.submit "(deny request)" %>
+<% end %> 
