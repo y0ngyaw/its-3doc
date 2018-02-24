@@ -7,7 +7,9 @@ class ParticipantsController < ApplicationController
 
 	def create
 		@participant = Participant.new(participant_params)
+		@password = @participant.password
 		if @participant.save
+			ParticipantMailer.participant_created(@participant, @password).deliver_later
 			redirect_to root_path
 		else 
 			flash.now[:error] = "Error!"

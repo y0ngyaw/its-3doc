@@ -34,4 +34,8 @@ class Participant < ApplicationRecord
     	update_attribute(:remember_digest, nil)
     end 
 
+    def secure_password
+        SecureRandom.hex(5)
+    end 
+
 end

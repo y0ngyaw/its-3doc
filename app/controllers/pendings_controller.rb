@@ -11,6 +11,7 @@ class PendingsController < ApplicationController
 				if eligible_to_join? @proposal 
 					@pending = current_participant.pendings.build(proposal_id: @proposal.id)
 					if @pending.save
+						ParticipantMailer.request_email(@pending).deliver_later
 						redirect_to root_path
 					else 
 						redirect_to root_path

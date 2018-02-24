@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <%= image_tag "3doc_logo.png", size: "240x120", alt: "3 Days of Code"%>
+    <h3>Dear <%= @leader.name %>,</h3><br>
+
+    <p>We are glad to inform you that one of our participants, <strong><%= @participant.name %></strong> requested to join your team.</p><br>
+
+    <p>We encourage you to have discussion with <strong><%= @participant.name %></strong> personally before accepting or rejecting his/her request on joining your group. Do check out his/her contact info in the online <%= link_to "platform", login_url %> provided.</p><br>
+
+    <p>Hope that you can find your team members and shine bright in this hackathon. Have a nice day ahead!</p>
+    <br>
+    <p>Sincerely, <br>
+    Committess of 3 Days of Code<br>
+    IT Society<br>
+    Multimedia University Cyberjaya</p>
+    
+  </body>
+</html>

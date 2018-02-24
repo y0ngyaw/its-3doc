@@ -9,6 +9,8 @@ class TeamMembersController < ApplicationController
 		@pending = Pending.find(params[:id])
 		if is_leader? && team_is_available?(@pending.proposal)
 			@pending.accept
+			@team_member = @pending.participant.team_member
+			ParticipantMailer.joined_group_email(@team_member).deliver
 			redirect_to root_path
 		end 
 	end 
