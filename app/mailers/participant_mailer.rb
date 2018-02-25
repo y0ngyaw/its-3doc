@@ -17,4 +17,9 @@ class ParticipantMailer < ApplicationMailer
 		mail to: @member.email, subject: "Grouping Status - 3 Days of Code Hackathon"
 	end 
 
+	def no_team_member_email(participant)
+		@leader = participant
+		@proposal = participant.proposal
+		mail to: @leader.email, subject: "Team Status - 3 Days of Code Hackathon"
+	end 
 end
