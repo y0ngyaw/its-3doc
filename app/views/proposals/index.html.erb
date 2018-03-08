@@ -1,59 +1,95 @@
-<div class="left-panel">
-	<div class="personal data">
-		<div class="name">
-			Name: <%= @participant.name %>
+<div class="body-container">
+	<div class="left-panel panel-shadow">
+		<div class="profile-title">
+			Your Profile
 		</div>
-		<div class="email">
-			Email: <%= @participant.email %>
+		<div class="profile-data-row">
+			<div class="profile-label">
+				Name :
+			</div>
+			<div class="profile-data">
+				<%= @participant.name %>
+			</div>
 		</div>
-		<div class="phone-num">
-			Contact Number: <%= @participant.phone_num %>
+		<div class="profile-data-row">
+			<div class="profile-label">
+				Email:
+			</div>
+			<div class="profile-data">
+				<%= @participant.email %>
+			</div>
 		</div>
+		<div class="profile-data-row">
+			<div class="profile-label">
+				Contact No:
+			</div>
+			<div class="profile-data">
+				<%= @participant.phone_num %>
+			</div>
+		</div>
+
+		<%= button_to "Edit Profile", edit_participant_path(@participant), method: "get", class: 'edit-btn' %>
 	</div>
 
-	<div class="edit-link">
-		<%= link_to "Edit Profile", edit_participant_path(@participant) %>
-	</div>
-</div>
-
-<div class="middle panel">
-	<div class="proposal">
-		<% @proposals.each do |proposal| %>
-			<div class="proposal-title">
-				<%= proposal.title %>
+	<div class="middle-panel">
+		<% if eligible_to_propose_topic? %>
+			<div class="new-proposal panel-shadow">
+				<%= button_to "Propose a New Topic", new_proposal_path, method: :get, class: 'new-proposal-btn' %>
 			</div>
-			<div class="proposal-description" %>
-				<%= proposal.description %>
-			</div>
-			<div class="proposal-status">
-				<% if proposal.status %>
-					Status: Available
-				<% else %>
-					Status: Not Available
-				<% end %>
-			</div>
-			<% if correct_proposal_participant proposal %>
-				<%= link_to "(edit)", edit_proposal_path(proposal) %>
-				<% unless proposal.has_member? %>
-					<%= link_to "(delete)", proposal_path(proposal), method: :delete %>
-				<% end %>
-			<% end %>
-			<% if eligible_to_join?(proposal) %>
-				<%= render 'pendings/request_to_join', proposal_id: proposal.id %>
-			<% end %>
-			<% if in_pending?(proposal) %>
-				<% if pending? proposal.pendings.find_by(participant_id: current_participant.id) %>
-					<%= render 'pendings/cancel_request', proposal_id: proposal.id %>
-				<% end %>
-			<% end %>
 		<% end %>
+
+		<div class="proposal-wrapper panel-shadow">
+			<% @proposals.each do |proposal| %>
+				<div class="proposal">
+					<div class="image-wrapper">
+						<% if proposal.theme == 1 %>
+							<%= image_tag "dataicon.png", class: "theme-icon" %>
+						<% elsif proposal.theme == 2 %>
+							<%= image_tag "educationicon.png", class: "theme-icon" %>
+						<% elsif proposal.theme == 3 %>
+							<%= image_tag "financeicon.png", class: "theme-icon" %>
+						<% end %>
+					</div>
+					<div class="content-wrapper">
+						<div class="proposal-title">
+							<%= proposal.title %>
+						</div>
+						<div class="proposal-description" %>
+							<%= proposal.description %>
+						</div>
+						<div class="proposal-status">
+							<% if proposal.status %>
+								Status: Available
+							<% else %>
+								Status: Not Available
+							<% end %>
+						</div>
+						<div class="proposal-btn">
+							<% if correct_proposal_participant proposal %>
+								<%= button_to "Edit", edit_proposal_path(proposal), method: "get", class: 'proposal-edit' %>
+							<% end %>
+							<% if eligible_to_join?(proposal) %>
+								<%= render 'pendings/request_to_join', proposal_id: proposal.id %>
+							<% end %>
+							<% if in_pending?(proposal) %>
+								<% if pending? proposal.pendings.find_by(participant_id: current_participant.id) %>
+									<%= render 'pendings/cancel_request', proposal_id: proposal.id %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="right-panel">
+		<% if has_proposal? %>
+			<%= render 'participants/leader_panel' %>
+		<% else %>
+			<%= render 'participants/member_panel' %>
+		<% end %>
+
+		<%= render 'team_members/team_panel' if in_team? || is_leader? %>
 	</div>
 </div>
-
-<% if has_proposal? %>
-	<%= render 'participants/leader_panel' %>
-<% else %>
-	<%= render 'participants/member_panel' %>
-<% end %>
-
-<%= render 'team_members/team_panel' if in_team? || is_leader? %>

@@ -14,5 +14,5 @@ class Pending < ApplicationRecord
   def deny
   	self.update_attribute(:status, "denied")
   end 
-  
+    
 end

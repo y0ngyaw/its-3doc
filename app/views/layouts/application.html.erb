@@ -4,21 +4,17 @@
     <%= favicon_link_tag '3doc_logo.ico' %>
     <title>ITS-3doc</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,700|Rubik" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="main-page-body">
   	<div class="navbar">
-  	  <div class="nav">
-  	    <div class="logo">
-  	      <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "logo-img" %>
-  	    </div>
-  	    <% if logged_in? %>
-  	      <%= link_to 'Logout', logout_path, method: 'delete', class: 'link nav-selection' %>
-  	    <% end %>
-  	  </div>
+	    <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
+	    <% if logged_in? %>
+        <%= button_to 'Logout', logout_path, method: 'delete', class: 'logout-btn' %>
+	    <% end %>
   	</div>
     <%= yield %>
   </body>

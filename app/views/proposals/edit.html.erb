@@ -22,4 +22,8 @@
 		<%= f.submit 'Propose', class: 'form-submit-button' %>
 	<% end %>
 
+	<% unless @proposal.has_member? %>
+		<%= button_to "Delete", proposal_path(@proposal), method: :delete %>
+	<% end %>
+
 </div>

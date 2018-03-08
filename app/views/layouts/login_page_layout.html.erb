@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= favicon_link_tag '3doc_logo.ico' %>
+    <title>ITS-3doc</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,700|Rubik" rel="stylesheet">
+  </head>
+
+  <body class="login_page_body">
+    <%= yield %>
+  </body>
+</html>

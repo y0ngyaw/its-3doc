@@ -41,14 +41,15 @@ class ProposalsController < ApplicationController
 		redirect_to proposals_path
 	end 
 
-
 	def destroy 
 		@proposal = Proposal.find_by(participant_id: current_participant.id)
-		if @proposal.has_member?
-			redirect_to proposals_path
-		else
-			@proposal.destroy
-			redirect_to proposals_path
+		if @proposal == Proposal.find(params[:id])
+			if @proposal.has_member?
+				redirect_to proposals_path
+			else
+				@proposal.destroy
+				redirect_to proposals_path
+			end 
 		end 
 	end 
 

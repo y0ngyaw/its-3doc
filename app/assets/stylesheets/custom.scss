@@ -1,21 +1,630 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 * {
 	overflow: hidden;
 	margin: 0 auto;
 	width: auto;
 	text-align: center;
 	text-decoration: none;
+	font-family: 'Cabin', sans-serif;
+}
+
+body.main-page-body {
+	height: 100vh;
+	overflow: scroll;
+}
+
+.login_page_body {
+	background-image: url(image-path("/assets/background.png"));
+	background-color: none;
+}
+
+.login-panel {
+	background-color: #F2F1F0;
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 85%;
+    width: 85%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.5), 0 4px 50px 0 rgba(0, 0, 0, 0.3);
+}
+
+.image-container {
+	display: block;
+	position: relative;
+	float: left;
+	width: 49.9%;
+	height: 100%;
+}
+
+.image-container::before {
+	content: "";
+	height: 0%;
+	width: 100%;
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
+	top: 15%;
+	border-right: 1px solid #ADACAC;
+	background-color: transparent;
+	animation: line-animation 2s ease-in forwards;
+}
+
+@keyframes line-animation {
+	from { height: 0%;
+			top: 50%; }
+	to { height: 70%;
+			top: 15%; }
+}
+
+.login-container {
+	display: block;
+	position: relative;
+	float: right;
+	width: 49.9%;
+	height: 100%;
+	padding-left: 2.5%;
+}
+
+.logo-img {
+	display: block;
+	width: 75%;
+	height: 45%;
+	margin: 27.5% auto;
+}
+
+.title {
+	font-family: 'Cabin', sans-serif;
+	font-size: 10vh;
+	display: block;
+	position: relative;
+	width: 100%;
+	text-align: left;
+	margin-top: 20%;
+}
+
+.login-form-group {
+	display: block;
+	position: relative;
+	height: 60%;
+}
+
+.form-label {
+	font-family: 'Cabin', sans-serif;
+	font-weight: bold;
+	font-size: 2.5vh;
+	display: block;
+	position: relative;
+	width: 100%;
+	text-align: left;
+	margin-top: 2.5%;
+	margin-bottom: 1%;
+}
+
+.form-input {
+	display: block;
+	width: 40%;
+	height: 7.5%;
+	text-align: left;
+	padding-left: 7.5px;
+	font-size: 120%;
+}
+
+.remember-me-label {
+	display: block;
+	float: left;
+	margin-top: 2%;
+	width: 100%;
+}
+
+.checkbox {
+	display: block;
+	float: left;
+}
+
+.checkbox-label {
+	float: left;
+    display: block;
+    margin-left: 10px;
+}
+
+.login-button {
+	float: left;
+	background: none;
+	padding: 1% 7.5%;
+	margin: 2% auto;
+	box-sizing: border-box;
+	border: 1px solid #506e82;
+	transition: background-color 0.5s ease;
+	font-family: 'Cabin', sans-serif;
+	font-weight: bold;
+	font-size: 1.75vh;
+	color: #506e82;
+}
+
+.login-button:hover {
+	background-color: #506e82;
+	color: #fff;
 }
 
 .navbar {
-	background-color: #fff;
+	background-color: #FAF9F8;;
 	color: #fff;
 	overflow: hidden;
+	display: block;
+	position: absolute;
+	height: 9vh;
+	width: 100%;
+	z-index: 100;
+	top: 0;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.nav::before {
+.navbar::before {
 	content: '';
 	background-color: #526E86;
 	display: block;
 	width: 100%;
 	height: 5px;
 }
+
+.navbar-logo-img {
+	display: inline-block;
+	position: absolute;
+	height: 95%;
+	left: 5%;
+}
+
+.logout-btn {
+	display: inline-block;
+    position: absolute;
+    right: 5%;
+    background-color: transparent;
+    color: #D75E53;
+    box-sizing: border-box;
+    border: 1px solid #D75E53;
+    padding: 0.4% 1.25%;
+    top: 55%;
+    transform: translate(0, -50%);
+    font-size: 125%;
+    transition: background-color 0.5s ease;
+}
+
+.logout-btn:hover {
+	background-color: #D75E53;
+	color: #fff;
+}
+
+.body-container {
+	margin: 11vh 5% 0 5%;
+    display: flex;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.panel-shadow {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-top: 1px solid #D3D6D9;
+	box-sizing: border-box;
+}
+
+.left-panel {
+	flex-grow: 1;
+	display: block;
+    height: 100%;
+    margin: 1%;
+    padding: 2% 0;
+    min-width: 250px;
+    max-width: 375px;
+}
+
+.profile-title {
+	display: block;
+    font-size: 180%;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.profile-data-row {
+	display: block;
+    position: relative;
+    margin: 2% 0;
+}
+
+.profile-label {
+	display: block;
+    width: 35%;
+    float: left;
+    text-align: right;
+    word-wrap: break-word
+}
+
+.profile-data {
+	display: block;
+    width: 60%;
+    float: right;
+    text-align: left;
+    padding-right: 5%;
+    word-wrap: break-word;
+}
+
+.edit-btn {
+	display: inline-block;
+	width: 85%;
+	margin: 2% auto;
+	background-color: transparent;
+	border: 1px solid #EA6E2D;
+	font-size: 100%;
+	color: #EA6E2D;
+	padding: 1.5% 0;
+	transition: background-color 0.5s ease;
+}
+
+.edit-btn:hover {
+	background-color: #EA6E2D;
+	color: #fff;
+}
+
+.middle-panel {
+	flex-grow: 2;
+	margin: 1%;
+    padding: 0 1%;
+    height: min-content;
+}
+
+.new-proposal {
+	display: block;
+	width: 100%;
+	margin-bottom: 5%;
+	border: none
+}
+
+.new-proposal-btn {
+	display: block;
+	width: 100%;
+    background-color: transparent;
+    padding: 2%;
+    font-size: 130%;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    background-color: #fff;
+    box-sizing: border-box;
+    border: 1px solid #ADACAC;
+    color: #526E86;
+    transition: background-color 0.5s ease;
+}
+
+.new-proposal-btn:hover {
+	background-color: #526E86;
+	color: #fff;
+}
+
+.proposal-wrappper {
+	display: block;
+	position: relative;
+	height: auto;
+	width: 100%;
+}
+
+.proposal {
+	display: block;
+	position: relative;
+	padding: 1% 0 2% 0;	
+}
+
+.proposal::after {
+	content: "";
+	height: 1%;
+	width: 80%;
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
+	bottom: 0;
+	left: 10%;
+	border-bottom: 1px solid #ADACAC;
+	background-color: transparent;
+}
+
+.theme-icon {
+	display: block;
+	height: 100%;
+	width: 80%;
+    padding: 5%;
+    margin: auto;
+}
+
+.image-wrapper {
+	display: block;
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 100%;
+    margin-top: 1%;
+}
+
+.content-wrapper {
+	display: block;
+    position: relative;
+    width: 80%;
+    margin-left: 0;
+    float: right;
+    height: 100%;
+}
+
+.proposal-title {
+    display: block;
+    text-align: left;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    font-size: 180%;
+    margin: auto;
+    padding: 2% 0 1% 2%;
+    word-wrap: break-word;
+}
+
+.proposal-description {
+    display: block;
+    position: relative;
+    text-align: left;
+    font-size: 110%;
+    padding: 0 0 0 2%;
+    word-wrap: break-word;
+}
+
+.proposal-status {
+	display: block;
+	position: relative;
+	text-align: left;
+	font-size: 110%;
+	padding: 1% 0 1% 2%;
+	word-wrap: break-word;
+}
+
+.proposal-btn .proposal-edit,
+.proposal-btn .proposal-req,
+.proposal-btn .proposal-cancel-req {
+	display: inline-block;
+    float: left;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    padding: 0.5% 5%;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-size: 115%;
+    transition: background-color 0.5s ease;
+}
+
+.proposal-edit {
+	border: 1px solid #EA6E2D;
+	color: #EA6E2D;
+}
+
+.proposal-edit:hover {
+	background-color: #EA6E2D;
+	color: #fff;
+}
+
+.proposal-btn .proposal-req {
+	border: 1px solid #80BC40;
+	color: #80BC40;
+}
+
+.proposal-btn .proposal-req:hover {
+	background-color: #80BC40;
+	color: #fff;
+}
+
+.proposal-btn .proposal-cancel-req {
+	width: auto;
+	border: 1px solid #D75E53;
+	color: #D75E53;
+}
+
+.proposal-btn .proposal-cancel-req:hover {
+	background-color: #D75E53;
+	color: #fff;
+}
+
+.right-panel {
+	flex-grow: 1;
+	height: auto;
+	display: block;
+	margin: 1%;
+	min-width: 350px;
+}
+
+.leader-panel,
+.member-panel,
+.team-panel {
+	display: block;
+	height: auto;
+	padding-top: 10%;
+	margin-bottom: 10%;
+	margin: 0 2% 10% 2%;
+}
+
+.panel-title {
+	display: block;
+    font-size: 180%;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    margin: 0 5%;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.panel-description {
+	display: block;
+	position: relative;
+	font-size: 125%;
+	margin: 0 5%;
+	text-align: left;
+	line-height: 115%;
+	padding-bottom: 5%;
+}
+
+.pending-row,
+.team-member-row {
+	display: block;
+	position: relative;
+	padding: 5% 0;
+}
+
+.pending-row:after,
+.team-member-row:after {
+	content: "";
+	height: 1%;
+	width: 90%;
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
+	bottom: 0;
+	left: 5%;
+	border-bottom: 1px solid #ADACAC;
+	background-color: transparent;
+}
+
+.data-row {
+	display: block;
+    position: relative;
+    margin: 0;
+    padding: 0 5%;
+}
+
+.pending-label {
+	display: block;
+    width: 35%;
+    float: left;
+    text-align: right;
+    word-wrap: break-word
+}
+
+.participant-name,
+.pending-title,
+.team-member-name {
+	display: inline-block;
+	float: left;
+	font-size: 150%;
+	text-align: left;
+	width: 70%;
+}
+
+.participant-email,
+.participant-contact,
+.pending-status, 
+.team-member-email,
+.team-member-contact,
+.team-member-leave {
+	display: inline-block;
+    float: left;
+    font-size: 115%;
+    opacity: 0.7;
+    line-height: 120%;
+    text-align: left;
+}
+
+.participant-req-time {
+	display: inline-block;
+    float: right;
+    padding-top: 2%;
+    opacity: 0.6;
+    max-width: 29%;
+    word-wrap: break-word;
+}
+
+.pending-btn {
+	display: block;
+	position: relative;
+	padding: 2% 5%;
+}
+
+.pending-btn form {
+	display: inline-block;
+    width: 49%;
+}
+
+.accept-btn,
+.deny-btn,
+.cancel-req-btn,
+.acknowledge-btn {
+	width: 95%;
+	display: block;
+	padding: 2%;
+	font-size: 115%;
+	background-color: transparent;
+	box-sizing: border-box;
+}
+
+.accept-btn {
+    float: left;
+    border: 1px solid #80BC40;
+    color: #80BC40;
+    transition: background-color 0.5s ease;
+}
+
+.accept-btn:hover {
+	background-color: #80BC40;
+	color: #fff;
+}
+
+.deny-btn {
+	float: right;
+	border: 1px solid #D75E53;
+	color: #D75E53;
+	transition: background-color 0.5s ease;
+}
+
+.deny-btn:hover {
+	background-color: #D75E53;
+	color: #fff;
+}
+
+.cancel-req-btn,
+.acknowledge-btn {
+	width: 49%;
+	float: left;
+	margin-top: 2%;
+	border: 1px solid #D75E53;
+	color: #D75E53;
+	transition: background-color 0.5s ease;
+}
+
+.cancel-req-btn:hover,
+.acknowledge-btn:hover {
+	background-color: #D75E53;
+	color: #fff;
+}
+
+.member-data-row {
+	display: block;
+    position: relative;
+    margin: 0;
+    padding: 0 5%;
+}
+
+.leave-btn {
+	width: 85%;
+	margin: 2%;
+	background-color: transparent;
+	padding: 2%;
+	border: 1px solid #D75E53;
+	color: #D75E53;
+	transition: background-color 0.5s ease;
+}
+
+.leave-btn:hover {
+	background-color: #D75E53;
+	color: #fff;
+}
+
+.member-leave {
+	padding: 2% 0;
+	opacity: 0.8;
+}
+

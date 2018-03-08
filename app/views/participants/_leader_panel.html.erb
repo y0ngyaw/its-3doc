@@ -1,32 +1,56 @@
-<div>
-	Leader Panel
-</div>
-<div class="right panel">
+<div class="leader-panel panel-shadow">
+	<div class="panel-title">
+		Leader Panel
+	</div>
+	<div class="panel-description">
+		<% if @pending_lists.count == 0 %>
+			No participants requested to join your topic currently.
+		<% else %>
+			Here are all the participants requested to join your topic:
+		<% end %>
+	</div>
 	<div class="pending">
 		<% @pending_lists.each do |pending| %>
-			<div class="participant_name">
-				<%= pending.participant.name %>
-				<%= pending.participant.email %>
-				Requested <%= time_ago_in_words(pending.created_at) %> ago.
+			<div class="pending-row">
+				<div class="data-row">
+					<div class="participant-name">
+						<%= pending.participant.name %>
+					</div>
+					<div class="participant-req-time">
+						<%= time_ago_in_words(pending.created_at) %>
+					</div>
+				</div>
+				<div class="data-row">
+					<div class="participant-email">
+						<%= pending.participant.email %>
+					</div>
+				</div>
+				<div class="data-row">
+					<div class="participant-contact">
+						<%= pending.participant.phone_num %>
+					</div>
+				</div>
+				<% if pending? pending %>
+					<div class="pending-btn">
+						<%= render 'team_members/accept_request', pending_id: pending.id %>
+						<%= render 'team_members/deny_request', pending_id: pending.id %>
+					</div>
+				<% else %>
+					<div class="data-row">
+						<div class="pending-status">
+							<% if accepted? pending %>
+								Pending Status: Accpeted
+							<% elsif denied? pending %>
+								Pending Status: Denied
+							<% elsif full? pending %>
+								Your team is already full.
+							<% elsif taken? pending %>
+								This user has joined other group.
+							<% end %>
+						</div>
+					</div>
+				<% end %>
 			</div>
-			<% if pending? pending %>
-				<div class="accept">
-					<%= render 'team_members/accept_request', pending_id: pending.id %>
-				</div>
-				<div class="deny">
-					<%= render 'team_members/deny_request', pending_id: pending.id %>
-				</div>
-			<% else %>
-				<div class="status">
-					<% if accepted? pending %>
-						Pending Status: Accpeted
-					<% elsif denied? pending %>
-						Pending Status: Denied
-					<% elsif taken? pending %>
-						This user has joined other group.
-					<% end %>
-				</div>
-			<% end %>
 		<% end %>
 	</div>
 </div>

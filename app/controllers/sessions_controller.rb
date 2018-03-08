@@ -2,8 +2,11 @@ class SessionsController < ApplicationController
 	include SessionsHelper
 
 	def new
+
 		if logged_in?
 			redirect_to proposals_path
+		else 
+			render layout: "login_page_layout"
 		end 
 	end 
 

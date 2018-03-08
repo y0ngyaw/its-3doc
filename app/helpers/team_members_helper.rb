@@ -14,4 +14,8 @@ module TeamMembersHelper
 	def inactive_member? team_member 
 		team_member.status == "inactive"
 	end 
+
+	def is_last_member? proposal
+		proposal.team_members.count == 3
+	end
 end

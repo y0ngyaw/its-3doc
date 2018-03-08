@@ -20,7 +20,7 @@ module PendingsHelper
 	end 
 
 	def reach_pending_limit?
-		current_participant.pendings.count >= 3
+		current_participant.pendings.where("status = ?", 'pending').count >= 3
 	end 
 
 	def pending? pending
@@ -37,6 +37,28 @@ module PendingsHelper
 
 	def taken? pending 
 		pending.status == "taken"
+	end 
+
+	def full? pending 
+		pending.status == "full"
+	end 
+
+	def pending_full p_id 
+		@other_pendings = Proposal.find(p_id).pendings
+		@other_pendings.each do |p|
+			if pending? p 
+				p.update_attribute(:status, "full")
+			end 
+		end 
+	end
+
+	def pending_not_full p_id 
+		@other_pendings = Proposal.find(p_id).pendings
+		@other_pendings.each do |p|
+			if full? p 
+				p.update_attribute(:status, "pending")
+			end 
+		end 
 	end 
 
 end

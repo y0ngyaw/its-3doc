@@ -1,27 +1,60 @@
-<div>
-	Your Joining Request
-</div>
-<div class="right panel">
+<div class="member-panel panel-shadow">
+	<div class="panel-title">
+		Your Joining Request
+	</div>
+	<div class="panel-description">
+		<% if @pending_lists.count == 0 %>
+			You have not requested to join any team yet.
+		<% else %>
+			Here are all your requests.
+		<% end %>
+	</div>
 	<div class="pending">
-		
 		<% @pending_lists.each do |pending| %>
-		<% print @pending_lists.size %>
-			<div>
-				<% print pending.proposal.nil? %>
-				<% unless taken? pending %>
-					<%= pending.proposal.title %>
-					<%= pending.proposal.description %>
-					You requested to join <%= time_ago_in_words(pending.created_at) %> ago.
-
+			<% unless taken? pending %>
+				<div class="pending-row">
+					<div class="data-row">
+						<div class="pending-title">
+							<%= pending.proposal.title %>
+						</div>
+						<div class="participant-req-time">
+							<%= time_ago_in_words(pending.created_at) %>
+						</div>
+					</div>
+					
 					<% if accepted? pending %>
-						Pending Status: Accepted
+						<div class="data-row">
+							<div class="pending-status">
+								Pending Status: Accepted
+							</div>
+						</div>
 					<% elsif denied? pending %>
-						Pending Status: Denied
+						<div class="data-row">
+							<div class="pending-status">
+								Pending Status: Denied
+							</div>
+						</div>
+					<% elsif full? pending %>
+						<div class="data-row">
+							<div class="pending-status">
+								Pending Status: Team full
+							</div>
+						</div>
+						<div class="data-row">
+							<%= render 'pendings/cancel_request', proposal_id: pending.proposal_id %>
+						</div>
 					<% elsif pending? pending %>
-						<%= render 'pendings/cancel_request', proposal_id: pending.proposal_id %>
+						<div class="data-row">
+							<div class="pending-status">
+								Pending Status: Pending
+							</div>
+						</div>
+						<div class="data-row">
+							<%= render 'pendings/cancel_request', proposal_id: pending.proposal_id %>
+						</div>
 					<% end %>
-				<% end %>
-			</div>
+				</div>
+			<% end %>			
 		<% end %>
 	</div>
 </div>

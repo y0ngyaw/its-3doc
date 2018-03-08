@@ -1,48 +1,109 @@
-<div>
-	Team Panel
-</div>
-
-<% if is_leader? %>
-	<div class="proposal_title">
-		Title: <%= current_participant.proposal.title %>
+<div class="team-panel panel-shadow">
+	<div class="panel-title">
+		Team Panel
 	</div>
-	<div class="team_member">
-		<div class="leader">
-			Leader: <%= current_participant.name %>
+	<% if is_leader? %>
+		<div class="panel-description">
+			Title: <%= current_participant.proposal.title %>
 		</div>
-		<% all_team_members(current_participant.proposal).each do |tm| %>
-			<div class="member">
-				<%= tm.participant.name %>
-				<% if inactive_member? tm %>
-					<div>
-						This member would wish to leave your team.
-						<%= render 'team_members/acknowledge', team_member_id: tm.id %>
+		<div class="team-member">
+			<div class="team-member-row">
+				<div class="data-row">
+					<div class="team-member-name">
+						Leader: <%= current_participant.name %>
 					</div>
-				<% end %>
+				</div>
+				<div class="data-row">
+					<div class="team-member-email">
+						<%= current_participant.email %>
+					</div>
+				</div>
+				<div class="data-row">
+					<div class="team-member-contact">
+						<%= current_participant.phone_num %>
+					</div>
+				</div>
 			</div>
-		<% end %>
-	</div>
-
-<% else %>
-	<div class="proposal_title">
-		Title: <%= current_participant.team_member.proposal.title %>
-	</div>
-	<div class="team_member">
-		<div class="leader">
-			Leader: <%= proposal_leader(current_participant.team_member.proposal).name %>
+			<% all_team_members(current_participant.proposal).each do |tm| %>
+				<div class="team-member-row">
+					<div class="data-row">
+						<div class="team-member-name">
+							<%= tm.participant.name %>
+						</div>
+					</div>
+					<div class="data-row">
+						<div class="team-member-email">
+							<%= tm.participant.email %>
+						</div>
+					</div>
+					<div class="data-row">
+						<div class="team-member-contact">
+							<%= tm.participant.phone_num %>
+						</div>
+					</div>
+					<% if inactive_member? tm %>
+						<div class="data-row">
+							<div class="team-member-leave">
+								This member would wish to leave your team.
+							</div>
+						</div>
+						<div class="data-row">
+							<%= render 'team_members/acknowledge', team_member_id: tm.id %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
-		<% all_team_members(current_participant.team_member.proposal).each do |tm| %>
-			<div class="member">
-				<%= tm.participant.name %>
-			</div>
-		<% end %>
-	</div>
 
-	<div class="leave">
-		<% if inactive_member? current_participant.team_member %>
-			<div>Your leaving request has sent to team leader.</div>
-		<% else %>
-			<%= render 'team_members/leave' %>
-		<% end %>
-	</div>
-<% end %>
+	<% else %>
+		<div class="panel-description">
+			Title: <%= current_participant.team_member.proposal.title %>
+		</div>
+		<div class="team_member">
+			<div class="team-member-row">
+				<div class="data-row">
+					<div class="team-member-name">
+						Leader: <%= proposal_leader(current_participant.team_member.proposal).name %>
+					</div>
+				</div>
+				<div class="data-row">
+					<div class="team-member-email">
+						<%= proposal_leader(current_participant.team_member.proposal).email %>
+					</div>
+				</div>
+				<div class="data-row">
+					<div class="team-member-contact">
+						<%= proposal_leader(current_participant.team_member.proposal).phone_num %>
+					</div>
+				</div>
+			</div>
+			<% all_team_members(current_participant.team_member.proposal).each do |tm| %>
+				<div class="team-member-row">
+					<div class="data-row">
+						<div class="team-member-name">
+							<%= tm.participant.name %>
+						</div>
+					</div>
+					<div class="data-row">
+						<div class="team-member-email">
+							<%= tm.participant.email %>
+						</div>
+					</div>
+					<div class="data-row">
+						<div class="team-member-contact">
+							<%= tm.participant.phone_num %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="member-leave">
+			<% if inactive_member? current_participant.team_member %>
+				<div>Your leaving request has sent to the team leader.</div>
+			<% else %>
+				<%= render 'team_members/leave' %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

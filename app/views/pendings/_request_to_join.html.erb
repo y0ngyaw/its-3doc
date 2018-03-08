@@ -1,4 +1,4 @@
 <%= form_for :pending, url: pendings_path, remote: true do |f| %>
 	<div><%= hidden_field_tag :proposal_id, proposal_id %></div>
-	<%= f.submit "(request to join)" %>
+	<%= f.submit "Request to Join", class: 'proposal-req' %>
 <% end %>

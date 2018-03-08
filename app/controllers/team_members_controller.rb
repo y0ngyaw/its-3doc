@@ -7,10 +7,14 @@ class TeamMembersController < ApplicationController
 
 	def create
 		@pending = Pending.find(params[:id])
-		if is_leader? && team_is_available?(@pending.proposal)
+		proposal = @pending.proposal
+		if is_leader? && team_is_available?(proposal)
 			@pending.accept
 			@team_member = @pending.participant.team_member
-			ParticipantMailer.joined_group_email(@team_member).deliver
+			ParticipantMailer.joined_group_email(@team_member).deliver_later
+			if is_last_member? proposal 
+				pending_full(proposal.id)
+			end 
 			redirect_to root_path
 		end 
 	end 
@@ -30,6 +34,9 @@ class TeamMembersController < ApplicationController
 	def acknowledge
 		@team_member = TeamMember.find(params[:id])
 		if current_participant == proposal_leader(@team_member.proposal)
+			if is_last_member? @team_member.proposal 
+				pending_not_full(@team_member.proposal.id)
+			end 
 			@team_member.allow_to_leave
 			redirect_to root_path
 		else
