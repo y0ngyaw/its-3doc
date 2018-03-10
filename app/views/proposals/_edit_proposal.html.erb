@@ -1,0 +1,61 @@
+<div class="edit-proposal-container" id="edit-proposal-container">
+	<div class="edit-proposal-panel">
+		<%= button_tag(class: 'close-btn', id: 'close-btn') do %>
+			<i class="glyphicon glyphicon-remove"></i>
+		<% end %>
+
+		<div class="edit-proposal-title">
+			Editting your topic...
+		</div>
+		
+		<div class="edit-proposal-form-group">
+			<%= form_for @proposal, class: 'edit-proposal-form-group' do |f| %>
+				<div class="edit-proposal-row">
+					<%= f.label :title, class: 'edit-proposal-label' %>
+					<%= f.text_field :title, maxlength: 65, class: 'edit-proposal-input', id: 'title-input' %>
+					<div class="word-remain">
+						<span id="variable-num-title"><%= 65 - @proposal.title.length %></span>/65 character(s) remaining.
+					</div>
+				</div>
+				
+				<div class="edit-proposal-row">
+					<%= f.label :description, class: 'edit-proposal-label' %>
+					<%= f.text_area :description, rows: '8', maxlength: 255, class: 'edit-proposal-textarea', id: 'description-input' %>
+					<div class="word-remain">
+						<span id="variable-num-description"><%= 255 - @proposal.description.length %></span>/255 character(s) remaining.
+					</div>
+				</div>
+				
+				<div class="edit-proposal-row">
+					<div class="edit-proposal-label" %>
+						Category
+					</div>
+
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Data", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 1, class: 'radio-btn' %>
+							<div class="radio-btn-label">Data</div>
+						<% end %>
+					</div>
+
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Education", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 2, class: 'radio-btn' %>
+							<div class="radio-btn-label">Education</div>
+						<% end %>
+					</div>
+					
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Finance", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 3, class: 'radio-btn' %>
+							<div class="radio-btn-label">Finance</div>
+						<% end %>
+					</div>
+				</div>
+				
+				<%= f.submit 'Propose', class: 'propose-btn' %>
+			<% end %>
+		</div>
+	</div>
+
+</div>

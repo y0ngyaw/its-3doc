@@ -1,4 +1,4 @@
-<div class="body-container">
+<div class="body-container" id="body-container">
 	<div class="left-panel panel-shadow">
 		<div class="profile-title">
 			Your Profile
@@ -28,13 +28,13 @@
 			</div>
 		</div>
 
-		<%= button_to "Edit Profile", edit_participant_path(@participant), method: "get", class: 'edit-btn' %>
+		<%= button_to "Edit Profile", edit_participant_path(@participant), method: "get", remote: true, class: 'edit-btn' %>
 	</div>
 
 	<div class="middle-panel">
 		<% if eligible_to_propose_topic? %>
 			<div class="new-proposal panel-shadow">
-				<%= button_to "Propose a New Topic", new_proposal_path, method: :get, class: 'new-proposal-btn' %>
+				<%= button_to "Propose a New Topic", new_proposal_path, method: :get, remote: true, class: 'new-proposal-btn', id: 'new-proposal-btn' %>
 			</div>
 		<% end %>
 
@@ -66,7 +66,7 @@
 						</div>
 						<div class="proposal-btn">
 							<% if correct_proposal_participant proposal %>
-								<%= button_to "Edit", edit_proposal_path(proposal), method: "get", class: 'proposal-edit' %>
+								<%= button_to "Edit", edit_proposal_path(proposal), method: "get", remote: true, class: 'proposal-edit' %>
 							<% end %>
 							<% if eligible_to_join?(proposal) %>
 								<%= render 'pendings/request_to_join', proposal_id: proposal.id %>

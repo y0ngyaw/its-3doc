@@ -1,0 +1,29 @@
+$('body').append("<%= escape_javascript(render partial: 'proposals/edit_proposal') %>");
+
+$('#edit-proposal-container').on('click', function(e) {
+	  if (e.target !== this)
+	    return;
+	  $(this).fadeOut(500, function() {
+	  	$(this).remove();
+	  });
+});
+
+$('#title-input').on('change keyup paste', function(e) {
+	var max = 65;
+	var length = $(this).val().length;
+	var available = max-length;
+	$('#variable-num-title').text(available);
+});
+
+$('#description-input').on('change keyup paste', function(e) {
+	var max = 255;
+	var length = $(this).val().length;
+	var available = max-length;
+	$('#variable-num-description').text(available);
+});
+
+$('#close-btn').on('click', function(){
+	$('#edit-proposal-container').fadeOut(500, function() {
+	  	$('#edit-proposal-container').remove();
+	});
+})

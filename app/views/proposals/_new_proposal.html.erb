@@ -1,0 +1,61 @@
+<div class="new-proposal-container" id="new-proposal-container">
+	<div class="new-proposal-panel">
+		<%= button_tag(class: 'close-btn', id: 'close-btn') do %>
+			<i class="glyphicon glyphicon-remove"></i>
+		<% end %>
+
+		<div class="new-proposal-title">
+			Getting your topic ready...
+		</div>
+		
+		<div class="new-proposal-form-group">
+			<%= form_for @proposal do |f| %>
+				<div class="new-proposal-row">
+					<%= f.label :title, class: 'new-proposal-label' %>
+					<%= f.text_field :title, maxlength: '65', class: 'new-proposal-input', id: "title-input" %>
+					<div class="word-remain">
+						<span id="variable-num-title">65</span>/65 character(s) remaining.
+					</div>
+				</div>
+				
+				<div class="new-proposal-row">
+					<%= f.label :description, class: 'new-proposal-label' %>
+					<%= f.text_area :description, maxlength: '255', rows: '8', class: 'new-proposal-textarea', id: "description-input" %>
+					<div class="word-remain">
+						<span id="variable-num-description">255</span>/255 character(s) remaining.
+					</div>
+				</div>
+				
+				<div class="new-proposal-row">
+					<div class="new-proposal-label" %>
+						Category
+					</div>
+
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Data", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 1, class: 'radio-btn' %>
+							<div class="radio-btn-label">Data</div>
+						<% end %>
+					</div>
+
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Education", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 2, class: 'radio-btn' %>
+							<div class="radio-btn-label">Education</div>
+						<% end %>
+					</div>
+					
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Finance", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 3, class: 'radio-btn' %>
+							<div class="radio-btn-label">Finance</div>
+						<% end %>
+					</div>
+				</div>
+				
+				<%= f.submit 'Propose', class: 'propose-btn' %>
+			<% end %>
+		</div>
+	</div>
+
+</div>

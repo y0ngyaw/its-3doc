@@ -1,0 +1,15 @@
+$('body').append("<%= escape_javascript(render partial: 'participants/edit_participant') %>");
+
+$('#edit-participant-container').on('click', function(e) {
+	  if (e.target !== this)
+	    return;
+	  $(this).fadeOut(500, function() {
+	  	$(this).remove();
+	  });
+});
+
+$('#close-btn').on('click', function(){
+	$('#edit-participant-container').fadeOut(500, function() {
+	  	$('#edit-participant-container').remove();
+	});
+})

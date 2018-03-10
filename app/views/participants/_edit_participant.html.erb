@@ -1,0 +1,42 @@
+<div class="edit-participant-container" id="edit-participant-container">
+	<div class="edit-participant-panel">
+		<%= button_tag(class: 'close-btn', id: 'close-btn') do %>
+			<i class="glyphicon glyphicon-remove"></i>
+		<% end %>
+
+		<div class="edit-participant-title">
+			Editting your profile...
+		</div>
+		
+		<div class="edit-participant-form-group">
+			<%= form_for @participant, class: 'edit-participant-form-group' do |f| %>
+				<div class="edit-participant-row">
+					<%= f.label :name, class: 'edit-participant-label' %>
+					<%= f.text_field :name, class: 'edit-participant-input' %>
+				</div>
+				
+				<div class="edit-participant-row">
+					<%= f.label :email, class: 'edit-participant-label' %>
+					<%= f.text_field :email, class: 'edit-participant-input' %>
+				</div>
+
+				<div class="edit-participant-row">
+					<%= f.label :password, class: 'edit-participant-label' %>
+					<%= f.password_field :password, class: 'edit-participant-input' %>
+				</div>
+				
+				<div class="edit-participant-row">
+					<%= f.label :password_confirmation, class:'edit-participant-label' %>
+					<%= f.password_field :password, class: 'edit-participant-input' %>
+				</div>
+
+				<div class="edit-participant-row">
+					<%= f.label 'Phone Number', class: 'edit-participant-label' %>
+					<%= f.text_field :phone_num, class: 'edit-participant-input' %>
+				</div>
+				
+				<%= f.submit 'Update', class: 'update-btn' %>
+			<% end %>
+		</div>
+	</div>
+</div>

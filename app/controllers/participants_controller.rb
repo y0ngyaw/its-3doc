@@ -22,6 +22,11 @@ class ParticipantsController < ApplicationController
 
 	def edit
 		@participant = Participant.find(params[:id])
+
+		respond_to do |format|
+			format.js
+			format.html
+		end 
 	end
 
 	def update

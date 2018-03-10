@@ -7,16 +7,23 @@ class ProposalsController < ApplicationController
 
 	def new
 		@proposal = current_participant.build_proposal()
+
+		respond_to do |format| 
+			format.js 
+			format.html 
+		end 
 	end 
 
 	def create
-		@proposal = current_participant.build_proposal(proposal_params)
-		@proposal.theme = params[:proposal][:theme].to_i()
-		if @proposal.save
-			redirect_to proposals_path
-		else
-			render :new
-		end 
+		if eligible_to_propose_topic?
+			@proposal = current_participant.build_proposal(proposal_params)
+			@proposal.theme = params[:proposal][:theme].to_i()
+			if @proposal.save
+				redirect_to proposals_path
+			else
+				render :new
+			end 
+		end
 	end 
 
 	def index
@@ -32,6 +39,11 @@ class ProposalsController < ApplicationController
 
 	def edit 
 		@proposal = Proposal.find_by(participant_id: current_participant.id)
+
+		respond_to do |format|
+			format.js
+			format.html
+		end 
 	end 
 
 	def update

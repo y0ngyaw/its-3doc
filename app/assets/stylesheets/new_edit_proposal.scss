@@ -1,0 +1,139 @@
+.new-proposal-container,
+.edit-proposal-container {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	animation: background-darken 0.3s ease-in forwards;
+}
+
+@keyframes background-darken {
+	from { background-color: rgba(0,0,0,0); }
+	to { background-color: rgba(0,0,0,0.7); }
+}
+
+.new-proposal-panel,
+.edit-proposal-panel {
+	display: block;
+    width: 55%;
+    margin-top: 8%;
+    background-color: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    animation: show-panel 0.5s ease-in forwards;
+    box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.5), 0 4px 50px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes show-panel {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.new-proposal-title,
+.edit-proposal-title {
+	font-size: 220%;
+    font-family: 'Rubik',sans-serif;
+    margin: 8% 0 2% 0;
+}
+
+.new-proposal-form-group,
+.edit-proposal-form-group {
+	width: 80%;
+	margin-bottom: 5%;
+}
+
+.new-proposal-label,
+.edit-proposal-label {
+	display: inline-block;
+    font-size: 125%;
+    font-family: 'Rubik', sans-serif;
+    float: left;
+    width: 25%;
+    text-align: right;
+    font-weight: normal;
+}
+
+.new-proposal-input,
+.edit-proposal-input {
+	display: inline-block;
+    width: 60%;
+    text-align: left;
+    padding-left: 1%;
+    float: left;
+    margin-left: 5%;
+}
+
+.new-proposal-textarea,
+.edit-proposal-textarea {
+	display: inline-block;
+    width: 60%;
+    text-align: left;
+    padding-left: 1%;
+    height: 300%;
+    resize: none;
+    float: left;
+    margin-left: 5%;
+    margin-bottom: 4px;
+}
+
+.new-proposal-row,
+.edit-proposal-row {
+	margin: 3% 0;
+}
+
+.radio-btn {
+	display: inline-block;
+	float: left;
+}
+
+.radio-btn-label {
+	display: block;
+	color: #000;
+	padding: 0;	
+	font-weight: normal;
+	float: left
+}
+
+.radio-btn-column {
+	display: inline-block;
+	width: 20%;
+	padding-top: 0.5%;
+	float: left;
+}
+
+.propose-btn {
+	border: 1px solid #EA6E2D;
+	font-size: 100%;
+	color: #EA6E2D;
+	background-color: transparent;
+	width: 25%;
+	padding: 1%;
+	font-weight: bold;
+	font-size: 120%;
+	transition: background-color 0.5s ease;
+}
+
+.propose-btn:hover {
+	background-color: #EA6E2D;
+	color: #fff;
+}
+
+.word-remain {
+	width: 100%;
+	display: block;
+	text-align: right;
+	padding-right: 10%;
+	font-size: 80%;
+	opacity: 0.7;
+}
+
+.close-btn {
+	float: right;
+	background-color: transparent;
+	border: none;
+	font-size: 125%;
+	margin-top: 0.5%;
+}

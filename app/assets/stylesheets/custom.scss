@@ -305,11 +305,12 @@ body.main-page-body {
 	color: #fff;
 }
 
-.proposal-wrappper {
+.proposal-wrapper {
 	display: block;
 	position: relative;
 	height: auto;
 	width: 100%;
+	margin-bottom: 2%;
 }
 
 .proposal {
@@ -373,7 +374,7 @@ body.main-page-body {
     position: relative;
     text-align: left;
     font-size: 110%;
-    padding: 0 0 0 2%;
+    padding: 0 2%;
     word-wrap: break-word;
 }
 
