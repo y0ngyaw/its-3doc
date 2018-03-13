@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
 	include SessionsHelper
 
 	def new
-
 		if logged_in?
 			redirect_to proposals_path
 		else 
@@ -17,7 +16,7 @@ class SessionsController < ApplicationController
 			params[:session][:remember_me] == '1' ? remember(participant) : forget(participant)
 			redirect_to proposals_path
 		else 
-			render 'new'
+			redirect_to root_path
 		end 
 	end 
 

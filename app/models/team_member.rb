@@ -11,4 +11,8 @@ class TeamMember < ApplicationRecord
   	participant.pendings.destroy_all
   	self.destroy
   end 
+
+  def stay
+    self.update_attribute(:status, "reactive")
+  end 
 end

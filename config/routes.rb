@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do 
       post :leave
       post :acknowledge
+      post :stay
     end 
   end 
 

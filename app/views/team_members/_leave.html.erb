@@ -1,4 +1,5 @@
 <%= form_for(:team_member, url: leave_team_member_path(current_participant.id),
-	html: {method: :post}, remote: true) do |f| %>
-	<%= f.submit "Leave team", class: "leave-btn" %>
+	html: {method: :post}, remote: true, authenticity_token: true) do |f| %>
+	<%= f.submit "Leave team", data: { confirm: "Leave Team",
+	text: "By leaving a team, your leaving request will be sent to the team leader and you can only join other teams once the team leader acknowledge your leaving request. We recommend you to communicate with the leader before making any decision.", 'confirm-button-text': "Leave anyway", 'cancel-button-text': "Cancel", 'custom-class': "warning-class" }, class: "leave-btn" %>
 <% end %>

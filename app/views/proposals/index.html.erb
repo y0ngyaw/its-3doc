@@ -1,36 +1,4 @@
 <div class="body-container" id="body-container">
-	<div class="left-panel panel-shadow">
-		<div class="profile-title">
-			Your Profile
-		</div>
-		<div class="profile-data-row">
-			<div class="profile-label">
-				Name :
-			</div>
-			<div class="profile-data">
-				<%= @participant.name %>
-			</div>
-		</div>
-		<div class="profile-data-row">
-			<div class="profile-label">
-				Email:
-			</div>
-			<div class="profile-data">
-				<%= @participant.email %>
-			</div>
-		</div>
-		<div class="profile-data-row">
-			<div class="profile-label">
-				Contact No:
-			</div>
-			<div class="profile-data">
-				<%= @participant.phone_num %>
-			</div>
-		</div>
-
-		<%= button_to "Edit Profile", edit_participant_path(@participant), method: "get", remote: true, class: 'edit-btn' %>
-	</div>
-
 	<div class="middle-panel">
 		<% if eligible_to_propose_topic? %>
 			<div class="new-proposal panel-shadow">
@@ -57,11 +25,14 @@
 						<div class="proposal-description" %>
 							<%= proposal.description %>
 						</div>
+						<div class="proposal-tech">
+							Technology Applied: <%= proposal.tech %>
+						</div>
 						<div class="proposal-status">
 							<% if proposal.status %>
-								Status: Available
+								Status: Available (<%= all_team_members(proposal).count + 1 %>/4)
 							<% else %>
-								Status: Not Available
+								Status: Team Full
 							<% end %>
 						</div>
 						<div class="proposal-btn">

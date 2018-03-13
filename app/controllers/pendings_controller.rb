@@ -1,6 +1,7 @@
 class PendingsController < ApplicationController
 	include PendingsHelper
 	before_action :logged_in_participant, only: [:create, :destroy]
+	before_action :correct_participant, only: [:destroy]
 
 	def create
 		if reach_pending_limit?
@@ -25,4 +26,9 @@ class PendingsController < ApplicationController
 		Pending.find(params[:id]).destroy
 		redirect_to root_url
 	end 
+
+	private 
+		def correct_participant
+			redirect_to root_path unless current_participant?(Pending.find(params[:id]).participant)
+		end 
 end

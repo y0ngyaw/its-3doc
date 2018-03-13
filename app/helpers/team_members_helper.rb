@@ -18,4 +18,8 @@ module TeamMembersHelper
 	def is_last_member? proposal
 		proposal.team_members.count == 3
 	end
+
+	def reactive_member? team_member
+		team_member.status == "reactive"
+	end 
 end

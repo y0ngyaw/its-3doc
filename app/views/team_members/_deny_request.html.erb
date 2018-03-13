@@ -1,4 +1,5 @@
 <%= form_for current_participant.proposal.pendings.find(pending_id), url: team_member_path(pending_id),
-	html: {method: :delete}, remote: true, class: 'pending-form' do |f| %>
-	<%= f.submit "Deny Request", class: 'deny-btn' %>
+	html: {method: :delete}, remote: true, authenticity_token: true, class: 'pending-form' do |f| %>
+	<%= f.submit "Deny Request", data: { confirm: "Deny Request",
+	text: "Denying the request would mean that you, as a team leader, permanently reject the request of this participant from joining your team. We recommend you to communicate with this participant as well as existing team members in your team before making your decision.", 'confirm-button-text': "Deny anyway", 'cancel-button-text': "Maybe Later", 'custom-class': "warning-class" }, class: 'deny-btn' %>
 <% end %> 

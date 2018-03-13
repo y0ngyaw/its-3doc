@@ -5,12 +5,12 @@
 		<% end %>
 
 		<div class="edit-proposal-title">
-			Editting your topic...
+			Editing your topic...
 		</div>
 		
 		<div class="edit-proposal-form-group">
 			<%= form_for @proposal, class: 'edit-proposal-form-group' do |f| %>
-				<div class="edit-proposal-row">
+				<div class="edit-proposal-row" id="title-row">
 					<%= f.label :title, class: 'edit-proposal-label' %>
 					<%= f.text_field :title, maxlength: 65, class: 'edit-proposal-input', id: 'title-input' %>
 					<div class="word-remain">
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				
-				<div class="edit-proposal-row">
+				<div class="edit-proposal-row" id="description-row">
 					<%= f.label :description, class: 'edit-proposal-label' %>
 					<%= f.text_area :description, rows: '8', maxlength: 255, class: 'edit-proposal-textarea', id: 'description-input' %>
 					<div class="word-remain">
@@ -26,6 +26,14 @@
 					</div>
 				</div>
 				
+				<div class="edit-proposal-row" id="tech-row">
+					<%= f.label "Technology", class: 'edit-proposal-label' %>
+					<%= f.text_field :tech, maxlength: '30', class: 'edit-proposal-input', id: "tech-input" %>
+					<div class="word-remain">
+						<span id="variable-num-tech"><%= 30 - @proposal.tech.length %></span>/30 character(s) remaining.
+					</div>
+				</div>
+
 				<div class="edit-proposal-row">
 					<div class="edit-proposal-label" %>
 						Category
@@ -53,7 +61,13 @@
 					</div>
 				</div>
 				
-				<%= f.submit 'Propose', class: 'propose-btn' %>
+				<%= f.submit 'Propose', class: 'p-btn propose-btn' %>
+			<% end %>
+			
+			<% if eligible_to_delete?(@proposal) && correct_proposal_participant(@proposal)%>
+				<div class="delete-btn-group">
+					<%= button_to "Delete Proposal", proposal_path(@proposal), method: :delete,class: 'delete-btn' %>
+				</div>
 			<% end %>
 		</div>
 	</div>

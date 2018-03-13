@@ -1,5 +1,9 @@
 $('body').append("<%= escape_javascript(render partial: 'proposals/edit_proposal') %>");
 
+var title = true;
+var description = true;
+var tech = true;
+
 $('#edit-proposal-container').on('click', function(e) {
 	  if (e.target !== this)
 	    return;
@@ -13,6 +17,8 @@ $('#title-input').on('change keyup paste', function(e) {
 	var length = $(this).val().length;
 	var available = max-length;
 	$('#variable-num-title').text(available);
+
+	title = checkIfNull(this, length);
 });
 
 $('#description-input').on('change keyup paste', function(e) {
@@ -20,6 +26,17 @@ $('#description-input').on('change keyup paste', function(e) {
 	var length = $(this).val().length;
 	var available = max-length;
 	$('#variable-num-description').text(available);
+
+	description = checkIfNull(this, length);
+});
+
+$('#tech-input').on('change keyup paste', function(e) {
+	var max = 30;
+	var length = $(this).val().length;
+	var available = max-length;
+	$('#variable-num-tech').text(available);
+
+	tech = checkIfNull(this, length);
 });
 
 $('#close-btn').on('click', function(){
@@ -27,3 +44,56 @@ $('#close-btn').on('click', function(){
 	  	$('#edit-proposal-container').remove();
 	});
 })
+
+$('#title-input, #description-input, #tech-input').on('change keyup paste', function() {
+	if(title && description && tech) {
+		$('.p-btn').removeClass("disabled-btn");
+		$('.p-btn').addClass("propose-btn")
+	}
+	else {
+		$('.p-btn').removeClass("propose-btn");
+		$('.p-btn').addClass("disabled-btn");
+	}
+});
+
+$('.p-btn').click(function(event) {
+	$(".error-message").remove();
+	if(!title) {
+		event.preventDefault();
+		$("#title-input").addClass("warning-border");
+		$("#title-row").append('<div class="error-message">This field is required</div>');
+	}
+	else {
+		$("#title-row > .error-message").remove();
+	}
+
+	if(!description) {
+		event.preventDefault();
+		$("#description-input").addClass("warning-border");
+		$("#description-row").append('<div class="error-message">This field is required</div>');
+	}
+	else {
+		$("#descriptionrow > .error-message").remove();
+	}
+
+	if(!tech) {
+		event.preventDefault();
+		$("#tech-input").addClass("warning-border");
+		$("#tech-row").append('<div class="error-message">This field is required</div>');
+	}
+	else {
+		$("#tech-row > .error-message").remove();
+	}
+});
+
+function checkIfNull(destination, length) {
+	var content = $(destination).val();
+	if(length === 0 || $.trim($(destination).val()) == '') {
+		$(destination).addClass("warning-border");
+		return false;
+	}
+	else {
+		$(destination).removeClass("warning-border");
+		return true;
+	}
+}

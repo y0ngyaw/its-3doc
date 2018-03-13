@@ -1,4 +1,5 @@
-<%= form_for :pending, url: pendings_path, remote: true do |f| %>
+<%= form_for :pending, url: pendings_path, remote: true, authenticity_token: true do |f| %>
 	<div><%= hidden_field_tag :proposal_id, proposal_id %></div>
-	<%= f.submit "Request to Join", class: 'proposal-req' %>
+	<%= f.submit "Request to Join", data: { confirm: "Request for Joining",
+	text: "Sending your joining request to the group leader would mean that you are indeed interested in joining his team during the Hackathon. And since each participants can only make 3 requests at a time, we hope that you can consider thoroughly before sending this request.", 'confirm-button-text': "I'm interested", 'cancel-button-text': "Let me think first" }, class: 'proposal-req' %>
 <% end %>

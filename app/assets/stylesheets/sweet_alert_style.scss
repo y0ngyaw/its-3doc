@@ -1,0 +1,61 @@
+.swal2-modal {
+	border-radius: 0px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+}
+
+.swal2-modal h2 {
+	font-size: 150%;
+	font-family: 'Lato', sans-serif;
+	letter-spacing: 0.5px;
+}
+
+.swal2-modal .swal2-content {
+	display: block;
+	font-size: 110%;
+	padding: 0 5%;
+}
+
+.swal2-modal .swal2-spacer {
+	margin: 2%;
+}
+
+.swal2-modal .swal2-confirm,
+.swal2-modal .swal2-cancel {
+	background-color: transparent !important;
+	box-sizing: border-box;
+	border-radius: 0px;
+	font-size: 100%;
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+	transition: background-color 0.5s ease;
+}
+
+.swal2-modal .swal2-confirm {
+	color: #80BC40;
+	border: 1px solid #80BC40;
+}
+
+.swal2-modal .swal2-confirm:hover {
+	background-color: #80BC40 !important;
+	color: #fff;
+}
+
+.swal2-modal .swal2-cancel {
+	color: #EA6E2D;
+	border: 1px solid #EA6E2D;
+}
+
+.swal2-modal .swal2-cancel:hover {
+	background-color: #EA6E2D !important;
+	color: #fff;
+}
+
+.warning-class .swal2-confirm {
+	color: #D75E53;
+	border: 1px solid #D75E53;
+}
+
+.warning-class .swal2-confirm:hover {
+	background-color: #D75E53 !important;
+	color: #fff;
+}

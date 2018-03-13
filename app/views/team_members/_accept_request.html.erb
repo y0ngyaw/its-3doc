@@ -1,4 +1,5 @@
-<%= form_for :team_member, url: team_members_path, remote: true do |f| %>
+<%= form_for :team_member, url: team_members_path, remote: true, authenticity_token: true do |f| %>
 	<div><%= hidden_field_tag :id, pending_id %></div>
-	<%= f.submit "Accept Request", class: 'accept-btn' %>
+	<%= f.submit "Accept Request", data: { confirm: "Accept Request",
+	text: "Accepting the request would mean that you, as a team leader, wish to cooperate with this participant during the Hackathon. We recommend you to communicate with this participant as well as existing team members in your team before accepting this request. (PS: Team Leader cannot remove a member from a team unless a member wish to leave.)", 'confirm-button-text': "Accept", 'cancel-button-text': "Maybe Later" }, class: 'accept-btn' %>
 <% end %>

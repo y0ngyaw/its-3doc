@@ -9,19 +9,19 @@ class ProposalsController < ApplicationController
 		@proposal = current_participant.build_proposal()
 
 		respond_to do |format| 
+			format.html
 			format.js 
-			format.html 
 		end 
 	end 
 
 	def create
 		if eligible_to_propose_topic?
 			@proposal = current_participant.build_proposal(proposal_params)
-			@proposal.theme = params[:proposal][:theme].to_i()
+			# @proposal.theme = params[:proposal][:theme].to_i()
 			if @proposal.save
 				redirect_to proposals_path
 			else
-				render :new
+				redirect_to proposals_path
 			end 
 		end
 	end 
@@ -48,9 +48,11 @@ class ProposalsController < ApplicationController
 
 	def update
 		@proposal = Proposal.find_by(participant_id: current_participant.id)
-		@proposal.update_attributes(proposal_params)
-		@proposal.update_attribute(:theme, params[:proposal][:theme].to_i())
-		redirect_to proposals_path
+		if @proposal.update_attributes(proposal_params)
+			redirect_to proposals_path
+		else
+			redirect_to proposals_path
+		end 
 	end 
 
 	def destroy 
@@ -67,7 +69,7 @@ class ProposalsController < ApplicationController
 
 	private 
 		def proposal_params
-			params.require(:proposal).permit(:title, :description)
+			params.require(:proposal).permit(:title, :description, :tech, :theme)
 		end 
 
 		def no_proposal

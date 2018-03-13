@@ -10,19 +10,27 @@
 		
 		<div class="new-proposal-form-group">
 			<%= form_for @proposal do |f| %>
-				<div class="new-proposal-row">
+				<div class="new-proposal-row" id="title-row">
 					<%= f.label :title, class: 'new-proposal-label' %>
-					<%= f.text_field :title, maxlength: '65', class: 'new-proposal-input', id: "title-input" %>
+					<%= f.text_field :title, maxlength: '65', placeholder: "A Progressive Web App - Weekly Petrol Price in Malaysia", class: 'new-proposal-input', id: "title-input" %>
 					<div class="word-remain">
 						<span id="variable-num-title">65</span>/65 character(s) remaining.
 					</div>
 				</div>
 				
-				<div class="new-proposal-row">
+				<div class="new-proposal-row" id="description-row">
 					<%= f.label :description, class: 'new-proposal-label' %>
-					<%= f.text_area :description, maxlength: '255', rows: '8', class: 'new-proposal-textarea', id: "description-input" %>
+					<%= f.text_area :description, maxlength: '255', rows: '8', placeholder: "Your brief description goes here", class: 'new-proposal-textarea', id: "description-input" %>
 					<div class="word-remain">
 						<span id="variable-num-description">255</span>/255 character(s) remaining.
+					</div>
+				</div>
+
+				<div class="new-proposal-row" id="tech-row">
+					<%= f.label "Technology", class: 'new-proposal-label' %>
+					<%= f.text_field :tech, maxlength: '30', placeholder: "Ruby on Rails, Vue.js", class: 'new-proposal-input', id: "tech-input" %>
+					<div class="word-remain">
+						<span id="variable-num-tech">30</span>/30 character(s) remaining.
 					</div>
 				</div>
 				
@@ -53,7 +61,7 @@
 					</div>
 				</div>
 				
-				<%= f.submit 'Propose', class: 'propose-btn' %>
+				<%= f.submit 'Propose', class: 'p-btn disabled-btn' %>
 			<% end %>
 		</div>
 	</div>

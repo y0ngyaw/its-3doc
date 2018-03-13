@@ -41,13 +41,14 @@
 							<%= tm.participant.phone_num %>
 						</div>
 					</div>
-					<% if inactive_member? tm %>
+					<% if inactive_member?(tm)%>
 						<div class="data-row">
 							<div class="team-member-leave">
 								This member would wish to leave your team.
 							</div>
 						</div>
-						<div class="data-row">
+						<div class="leaving-btn">
+							<%= render 'team_members/stay', team_member_id: tm.id %>
 							<%= render 'team_members/acknowledge', team_member_id: tm.id %>
 						</div>
 					<% end %>
@@ -100,7 +101,10 @@
 
 		<div class="member-leave">
 			<% if inactive_member? current_participant.team_member %>
-				<div>Your leaving request has sent to the team leader.</div>
+				<div class="small-message">Your leaving request has sent to the team leader.</div>
+			<% elsif reactive_member? current_participant.team_member %>
+				<div class="small-message">Your leader wish you to stay in the team. Please contact him/her for discussion.</div>
+				<%= render 'team_members/leave' %>
 			<% else %>
 				<%= render 'team_members/leave' %>
 			<% end %>
