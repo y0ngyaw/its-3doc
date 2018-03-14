@@ -3,6 +3,7 @@
   <head>
     <%= favicon_link_tag '3doc_logo.ico' %>
     <title>ITS-3doc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,9 +12,12 @@
 
   <body class="main-page-body">
   	<div class="navbar">
+      <button type="button" class="small-screen-btn" id="small-screen-btn"><span class="glyphicon glyphicon-stats"></span></button>
 	    <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
 	    <% if logged_in? %>
-        <%= button_to 'Logout', logout_path, method: 'delete', class: 'logout-btn' %>
+        <%= button_to logout_path, method: 'delete', class: 'logout-btn' do %>
+          <span class="glyphicon glyphicon-log-out"></span><span class="logout-word">Logout</span>
+        <% end  %>
 	    <% end %>
   	</div>
     <%= yield %>

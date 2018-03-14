@@ -4,7 +4,7 @@ module TeamMembersHelper
 	end 
 
 	def all_team_members proposal
-		proposal.team_members 
+		proposal.team_members.eager_load(:participant) 
 	end 
 
 	def proposal_leader proposal 

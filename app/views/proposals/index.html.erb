@@ -22,6 +22,13 @@
 						<div class="proposal-title">
 							<%= proposal.title %>
 						</div>
+						<% if proposal.theme == 1 %>
+							<div class="proposal-theme-1">Theme: Data</div>
+						<% elsif proposal.theme == 2 %>
+							<div class="proposal-theme-2">Theme: Education</div>
+						<% elsif proposal.theme == 3 %>
+							<div class="proposal-theme-3">Theme: Finance</div>
+						<% end %>
 						<div class="proposal-description" %>
 							<%= proposal.description %>
 						</div>
@@ -30,7 +37,7 @@
 						</div>
 						<div class="proposal-status">
 							<% if proposal.status %>
-								Status: Available (<%= all_team_members(proposal).count + 1 %>/4)
+								Status: Available (<%= proposal.team_members.count + 1 %>/4)
 							<% else %>
 								Status: Team Full
 							<% end %>

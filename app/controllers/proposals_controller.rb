@@ -27,13 +27,12 @@ class ProposalsController < ApplicationController
 	end 
 
 	def index
-		@participant = current_participant
-		@proposals = Proposal.all 
+		@proposals = Proposal.eager_load(:team_members, :pendings) 
 
 		if has_proposal?
-			@pending_lists = current_participant.proposal.pendings
+			@pending_lists = current_participant.proposal.pendings.eager_load(:participant, :proposal)
 		else 
-			@pending_lists = current_participant.pendings
+			@pending_lists = current_participant.pendings.eager_load(:participant, :proposal)
 		end 
 	end 
 

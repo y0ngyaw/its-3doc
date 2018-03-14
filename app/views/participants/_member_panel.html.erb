@@ -22,6 +22,24 @@
 						</div>
 					</div>
 					
+					<div class="data-row">
+						<div class="pending-leader-name">
+							Leader: <%= pending.proposal.participant.name %>
+						</div>
+					</div>
+
+					<div class="data-row">
+						<div class="pending-leader-email">
+							<%= pending.proposal.participant.email %>
+						</div>
+					</div>
+
+					<div class="data-row">
+						<div class="pending-leader-contact">
+							<%= pending.proposal.participant.phone_num %>
+						</div>
+					</div>
+
 					<% if accepted? pending %>
 						<div class="data-row">
 							<div class="pending-status">

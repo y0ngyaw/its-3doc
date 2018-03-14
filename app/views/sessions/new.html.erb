@@ -4,10 +4,6 @@
 	</div>
 	
 	<div class="login-container">
-		<div class="title">
-			Login
-		</div>
-
 		<%= form_for(:session, url: login_path, html: {class: 'login-form-group'}) do |f| %>
 			<%= f.label :email, class: 'form-label' %>
 			<%= f.email_field :email, class: 'form-input' %>

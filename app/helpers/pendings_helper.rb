@@ -16,7 +16,7 @@ module PendingsHelper
 	end 
 
 	def eligible_to_join? proposal
-		!is_leader? && is_available?(proposal) && !in_pending?(proposal) && !in_team?
+		!is_leader? && is_available?(proposal) && !in_pending?(proposal) && !in_team? && !reach_pending_limit?
 	end 
 
 	def reach_pending_limit?

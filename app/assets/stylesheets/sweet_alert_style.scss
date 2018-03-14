@@ -1,6 +1,7 @@
 .swal2-modal {
 	border-radius: 0px;
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
 }
 
 .swal2-modal h2 {
@@ -22,11 +23,14 @@
 .swal2-modal .swal2-confirm,
 .swal2-modal .swal2-cancel {
 	background-color: transparent !important;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	border-radius: 0px;
 	font-size: 100%;
 	font-family: 'Lato', sans-serif;
 	font-weight: bold;
+	-webkit-transition: background-color 0.5s ease;
+	-o-transition: background-color 0.5s ease;
 	transition: background-color 0.5s ease;
 }
 
@@ -58,4 +62,26 @@
 .warning-class .swal2-confirm:hover {
 	background-color: #D75E53 !important;
 	color: #fff;
+}
+
+@media only screen and (max-width: 767px) {
+	.swal2-modal .swal2-confirm,
+	.swal2-modal .swal2-cancel {
+		width: 80%;
+		margin: 2%;
+		color: #fff;
+		border-radius: 3px;
+	}
+
+	.swal2-modal .swal2-confirm {
+		background-color: #80BC40 !important;
+	}
+
+	.swal2-modal .swal2-cancel {
+		background-color: #EA6E2D !important;
+	}
+
+	.warning-class .swal2-confirm {
+		background-color: #D75E53 !important;
+	}
 }

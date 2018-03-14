@@ -1,0 +1,219 @@
+body {
+	overflow-y: scroll;
+}
+
+.login_page_body {
+	background-image: url(image-path("/assets/technology.jpg"));
+    background-size: cover;
+}
+
+.login-panel {
+	width: 30%;
+	min-width: 350px;
+	margin: auto;
+	height: auto;
+	min-height: 630px;
+	display: block;
+	position: absolute;
+	padding: 5% 0;
+    left: 50%;
+    top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 3px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.5), 0 4px 50px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.5), 0 4px 50px 0 rgba(0, 0, 0, 0.3);
+}
+
+.image-container {
+	display: block;
+	position: relative;
+	float: left;
+	width: 100%;
+	height: auto;
+	padding-top: 3%;
+}
+
+@keyframes line-animation {
+	from { height: 0%;
+			top: 50%; }
+	to { height: 70%;
+			top: 15%; }
+}
+
+.login-container {
+	display: block;
+	position: relative;
+	float: right;
+	height: 100%;
+	width: 100%;
+	padding: 2% 15%;
+}
+
+.logo-img {
+    width: 60%;
+}
+
+.login-form-group {
+	display: block;
+	position: relative;
+	height: 60%;
+}
+
+.form-label {
+	font-family: 'Cabin', sans-serif;
+	font-weight: bold;
+	font-size: 135%;
+	display: block;
+	position: relative;
+	width: 100%;
+	text-align: left;
+	margin-top: 2.5%;
+	margin-bottom: 1%;
+}
+
+.form-input {
+	display: block;
+	height: 7.5%;
+	text-align: left;
+	padding: 2%;
+	width: 100%;
+	font-size: 150%;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid #A7ADA5;
+}
+
+.form-input:focus {
+	border-bottom: 1px solid #506E82;
+}
+
+.remember-me-label {
+	display: block;
+	float: left;
+	margin: 5% 0;
+	width: 100%;
+}
+
+.checkbox {
+	display: block;
+	float: left;
+}
+
+.checkbox-label {
+	float: left;
+    display: block;
+    margin-left: 10px;
+}
+
+.login-button {
+	float: left;
+	background: none;
+	margin: 2% auto;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 1px solid #506E82;
+	-webkit-transition: background-color 0.5s ease;
+	-o-transition: background-color 0.5s ease;
+	transition: background-color 0.5s ease;
+	font-family: 'Cabin', sans-serif;
+	color: #506E82;
+	width: 98%;
+	padding: 3%;
+	font-size: 120%;
+}
+
+.login-button:hover {
+	background-color: #506e82;
+	color: #fff;
+}
+
+@media only screen and (max-height: 480px) and (max-width: 767px) {
+	* {
+		overflow: unset;
+	}
+
+	.image-container {
+		padding-top: 0;
+	}
+
+	.login-form-group {
+		padding-top: 5%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.login-panel {
+		border-radius: 0px;
+		background-color: #fff;
+		width: 92%;
+		height: 95%;
+		padding: 20% 0;
+	}
+
+	.image-container {
+		width: 100%;
+		max-height: 35%;
+	}
+
+	.image-container::before {
+		display: none;
+	}
+
+	.logo-img {
+		max-width: 65%;
+		min-height: 65%;
+	}
+
+	.login-container {
+		width: 100%;
+		height: 65%;
+		padding-top: 10%;
+	}
+
+	.title {
+		display: none;
+	}
+
+	.login-form-group {
+		height: auto;
+	}
+
+	.form-label {
+		margin-left: 5%;
+		font-weight: normal;
+	}
+
+	.form-input {
+		margin-left: 5%;
+		width: 90%;
+		min-height: 35px;
+		font-size: 125%;
+		padding-left: 3px;
+		border: none;
+		border-bottom: 1px solid #A7ADA5;
+	}
+
+	.form-input:focus {
+		border-bottom: 1px solid #506E82;
+	}
+
+	.remember-me-label {
+		margin: 5%;
+	}
+
+	.login-button {
+		width: 96%;
+	    margin: unset;
+	    float: unset;
+	    font-size: 135%;
+	    color: #fff;
+	    background-color: #506E82;
+	    border-radius: 3px;
+	    padding: 3%;
+	}
+}
