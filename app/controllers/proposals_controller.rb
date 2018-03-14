@@ -6,12 +6,14 @@ class ProposalsController < ApplicationController
 	before_action :correct_participant, only: [:edit, :update, :destroy]
 
 	def new
-		@proposal = current_participant.build_proposal()
+		if eligible_to_propose_topic?
+			@proposal = current_participant.build_proposal()
 
-		respond_to do |format| 
-			format.html
-			format.js 
-		end 
+			respond_to do |format| 
+				format.html
+				format.js 
+			end 
+		end
 	end 
 
 	def create
@@ -50,6 +52,7 @@ class ProposalsController < ApplicationController
 		if @proposal.update_attributes(proposal_params)
 			redirect_to proposals_path
 		else
+			print @proposal.errors.full_messages
 			redirect_to proposals_path
 		end 
 	end 

@@ -70,12 +70,35 @@ footer {
     transition: background-color 0.5s ease;
 }
 
+.new-btn {
+	display: inline-block;
+	position: absolute;
+	right: 15%;
+	background-color: transparent;
+	color: #EA6E2D;
+	border: 1px solid #EA6E2D;
+	padding: 0.4% 1.25%;
+	top: 55%;
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	-webkit-transition: background-color 0.5s ease;
+	-o-transition: background-color 0.5s ease;
+	transition: background-color 0.5s ease;
+}
+
 .logout-btn:hover {
 	background-color: #D75E53;
 	color: #fff;
 }
 
-.logout-btn .glyphicon {
+.new-btn:hover {
+	background-color: #EA6E2D;
+	color: #fff;
+}
+
+.logout-btn .glyphicon,
+.new-btn .glyphicon {
 	margin-right: 5px;
 }
 
@@ -535,6 +558,10 @@ footer {
 		left: 3%;
 	}
 
+	.new-btn {
+		display: none;
+	}
+
 	.logout-btn {
 		right: 3%;
 	}
@@ -567,6 +594,10 @@ footer {
 	.navbar-logo-img {
 		display: inline-block;
 		position: unset;
+	}
+
+	.new-btn {
+		display: none;
 	}
 
 	.logout-btn {
@@ -618,6 +649,10 @@ footer {
 		border-radius: 3px;
 	}
 	
+	.proposal {
+		overflow: hidden;
+	}
+
 	.proposal-wrapper {
 		-webkit-box-shadow: none;
         box-shadow: none;

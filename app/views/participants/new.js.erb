@@ -1,0 +1,15 @@
+$('body').append("<%= escape_javascript(render partial: 'participants/new_participant') %>");
+
+$('#new-participant-container').on('click', function(e) {
+	  if (e.target !== this)
+	    return;
+	  $(this).fadeOut(500, function() {
+	  	$(this).remove();
+	  });
+});
+
+$('#close-btn').on('click', function(){
+	$('#new-participant-container').fadeOut(500, function() {
+	  	$('#new-participant-container').remove();
+	});
+})

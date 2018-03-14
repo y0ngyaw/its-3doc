@@ -15,6 +15,11 @@
       <button type="button" class="small-screen-btn" id="small-screen-btn"><span class="glyphicon glyphicon-stats"></span></button>
 	    <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
 	    <% if logged_in? %>
+        <% if current_participant.admin %>
+          <%= button_to new_participant_path, method: :get, remote: true, class: 'new-btn' do %>
+            <span class="glyphicon glyphicon-user"></span><span class="new-participant-word">New Participant</span>
+          <% end %>
+        <% end %>
         <%= button_to logout_path, method: 'delete', class: 'logout-btn' do %>
           <span class="glyphicon glyphicon-log-out"></span><span class="logout-word">Logout</span>
         <% end  %>

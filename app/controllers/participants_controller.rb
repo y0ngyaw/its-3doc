@@ -1,8 +1,14 @@
 class ParticipantsController < ApplicationController
 	before_action :correct_participant, only: [:edit, :update]
+	before_action :only_admin, only: [:new, :create]
 	
 	def new
 		@participant = Participant.new
+
+		respond_to do |format|
+			format.js
+			format.html
+		end 
 	end 
 
 	def create
@@ -12,8 +18,7 @@ class ParticipantsController < ApplicationController
 			ParticipantMailer.participant_created(@participant, @password).deliver_later
 			redirect_to root_path
 		else 
-			flash.now[:error] = "Error!"
-			render 'new'
+			redirect_to root_path
 		end 
 	end 
 
@@ -47,5 +52,9 @@ class ParticipantsController < ApplicationController
 	def correct_participant
 		@participant = Participant.find(params[:id])
 		redirect_to edit_participant_path(current_participant) unless current_participant?(@participant)
+	end 
+
+	def only_admin
+		redirect_to root_path unless current_participant.admin
 	end 
 end
