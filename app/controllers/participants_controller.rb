@@ -18,6 +18,7 @@ class ParticipantsController < ApplicationController
 			ParticipantMailer.participant_created(@participant, @password).deliver_later
 			redirect_to root_path
 		else 
+			flash.now[:error] = "Failed to create a new participant"
 			redirect_to root_path
 		end 
 	end 
@@ -39,7 +40,7 @@ class ParticipantsController < ApplicationController
 		if @participant.update_attributes(participant_params)
 			redirect_to proposals_path
 		else 
-			render 'edit'
+			redirect_to proposals_path
 		end 
 	end 
 

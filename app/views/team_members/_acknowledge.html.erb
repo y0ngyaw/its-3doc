@@ -1,5 +1,5 @@
 <%= form_for(:team_member, url: acknowledge_team_member_path(team_member_id), 
-	html: {method: :post}, remote: true) do |f| %>
+	html: {method: :post}, remote: true, authenticity_token: true) do |f| %>
 	<%= f.submit "Allow to Leave", data: { confirm: "Allow to Leave",
 	text: "Allowing a team member to leave would mean that this participant is no longer in your team during the Hackathon. We recommend you to communicate with each other as well as other existing team embers before making any decision.", 'confirm-button-text': "Allow anyway", 'cancel-button-text': "Cancel", 'custom-class': "warning-class" }, class: 'acknowledge-btn' %>
 <% end %>

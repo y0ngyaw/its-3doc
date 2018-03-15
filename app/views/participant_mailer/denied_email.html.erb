@@ -1,10 +1,10 @@
 <div class="wrapper">
   <%= image_tag "3doc_logo.png", size: "240x145", alt: "3 Days of Code"%>
-  <h3>Hello <%= @member.name %>,</h3>
+  <h3>Hello <%= @participant_name %>,</h3>
 
-  <div>We are glad to inform you that you have been accepted by <strong><%= @leader.name %></strong> to join his hackathon group with title of <strong>"<%= @leader.proposal.title %>"</strong>.</div><br>
+  <div>We are sorry to inform you that you request to join the team with title of <strong>"<%= @proposal_title %>"</strong> has been <strong>denied</strong>.</div><br>
 
-  <div>We encourage you to get known with the team leader, <strong><%= @leader.name %></strong> as well as other group members before the hackathon. Do check out other team members' contact info in the online <%= link_to "platform", login_url, target: :_blank %> provided.</div><br>
+  <div>Nevertheless, there are still other teams available around you and you still can request to join other teams. If you have your own ideas, you can propose a topic and ask other participants to join you as well.</div><br>
 
   <div>If there are any inquiries or difficulties you are having concerning the event, feel free to reach us  through our 3 Days of Code page on <%= link_to "Facebook", "https://www.facebook.com/3DaysofCode/?ref=br_rs", target: :_blank %> and we will tend to you shortly.</div><br>
 
@@ -15,4 +15,3 @@
   IT Society<br>
   Multimedia University Cyberjaya</div>
 </div>
-

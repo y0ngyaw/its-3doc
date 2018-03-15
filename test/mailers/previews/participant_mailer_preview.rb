@@ -15,4 +15,20 @@ class ParticipantMailerPreview < ActionMailer::Preview
 	def no_team_member_email
 		ParticipantMailer.no_team_member_email(TeamMember.first.proposal.participant)
 	end 
+
+	def denied_email
+		ParticipantMailer.denied_email(Pending.first)
+	end 
+
+	def wish_to_leave_email
+		ParticipantMailer.wish_to_leave_email(TeamMember.first)
+	end 
+
+	def allow_to_leave_email
+		ParticipantMailer.allow_to_leave_email(TeamMember.first)
+	end
+
+	def stay_email
+		ParticipantMailer.stay_email(TeamMember.first)
+	end 
 end

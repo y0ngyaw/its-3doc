@@ -22,4 +22,28 @@ class ParticipantMailer < ApplicationMailer
 		@proposal = participant.proposal
 		mail to: @leader.email, subject: "Team Status - 3 Days of Code Hackathon"
 	end 
+
+	def denied_email(pending)
+		@participant_name = pending.participant.name
+		@proposal_title = pending.proposal.title
+		mail to: pending.participant.email, subject: "Request denied - 3 Days of Code Hackathon"
+	end 
+
+	def wish_to_leave_email(team_member)
+		@participant = team_member.participant 
+		@leader = team_member.proposal.participant 
+		mail to: @leader.email, subject: "Team Member Leaving Request - 3 Days of Code Hackathon"
+	end 
+
+	def allow_to_leave_email(team_member)
+		@participant = team_member.participant 
+		@proposal = team_member.proposal
+		mail to: @participant.email, subject: "Leaving Request Granted - 3 Days of Code Hackathon"
+	end
+
+	def stay_email(team_member)
+		@participant = team_member.participant 
+		@proposal = team_member.proposal
+		mail to: @participant.email, subject: "Team Stay - 3 Days of Code Hackathon"
+	end
 end

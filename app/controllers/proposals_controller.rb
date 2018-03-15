@@ -19,7 +19,6 @@ class ProposalsController < ApplicationController
 	def create
 		if eligible_to_propose_topic?
 			@proposal = current_participant.build_proposal(proposal_params)
-			# @proposal.theme = params[:proposal][:theme].to_i()
 			if @proposal.save
 				redirect_to proposals_path
 			else

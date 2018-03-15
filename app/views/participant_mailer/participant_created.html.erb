@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <%= image_tag "3doc_logo.png", size: "240x120", alt: "3 Days of Code"%>
-    <h3>Dear <%= @participant.name %>,</h3><br>
-    <p>Thank you for joining 3 Days of Code - Hackathon organized by IT Society of MMU Cyberjaya.</p><br>
+<div class="wrapper">
+  <%= image_tag "3doc_logo.png", size: "240x145", alt: "3 Days of Code"%>
+  <h3>Hello <%= @participant.name %>,</h3><br>
+  <div>Thank you for joining 3 Days of Code - Hackathon organized by IT Society of MMU Cyberjaya.</div><br>
 
-    <p>For your information, our committees has developed an online platform for you to discover your team members in this hackathon competition. You can either propose your own idea and look for other participants as your team members or request to join other teams via this online platform.</p><br>
+  <div>For your information, our committees has developed an online platform for you to discover your team members in this hackathon competition. You can either propose your own idea and look for other participants as your team members or request to join other teams via this online platform.</div><br>
 
-    <p>You can access this <%= link_to "platform", login_url %> with your username and password listed below:<br>
-       Username  : <%= @participant.name %><br>
-       Password  : <%= @password %></p><br>
-
-    <p>Looking forward to seeing you and have a nice day ahead! </p>
-    <br>
-    <p>Sincerely, <br>
-    Too Seng Wei<br>
-    Director of 3 Days of Code<br>
-    IT Society MMU Cyberjaya.</p>
-    
-  </body>
-</html>
+  <div>You can access this <%= link_to "platform", login_url, target: :_blank %> with your username and password listed below:<br>
+     Username  : <%= @participant.name %><br>
+     Password  : <%= @password %></div><br>
+  
+  <div>If there are any inquiries or difficulties you are having concerning the event, feel free to reach us  through our 3 Days of Code page on <%= link_to "Facebook", "https://www.facebook.com/3DaysofCode/?ref=br_rs", target: :_blank %> and we will tend to you shortly.</div><br>
+  
+  <div>Looking forward to seeing you and have a nice day ahead! </div>
+  <br>
+  <div>Sincerely, <br>
+  Too Seng Wei<br>
+  Director of 3 Days of Code<br>
+  IT Society MMU Cyberjaya.</div>
+</div>

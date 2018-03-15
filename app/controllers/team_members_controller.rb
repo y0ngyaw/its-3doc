@@ -23,12 +23,14 @@ class TeamMembersController < ApplicationController
 
 	def destroy 
 		@pending = Pending.find(params[:id])
+		ParticipantMailer.denied_email(@pending).deliver_later
 		@pending.deny
 		redirect_to root_path
 	end 
 
 	def leave
 		@team_member = TeamMember.find_by(participant_id: params[:id])
+		ParticipantMailer.wish_to_leave_email(@team_member).deliver_later
 		@team_member.wish_to_leave
 		redirect_to root_path
 	end 
@@ -40,6 +42,7 @@ class TeamMembersController < ApplicationController
 				pending_not_full(@team_member.proposal.id)
 				@team_member.proposal.update_attribute(:status, true)
 			end 
+			ParticipantMailer.allow_to_leave_email(@team_member).deliver_later
 			@team_member.allow_to_leave
 			redirect_to root_path
 		else
@@ -50,6 +53,7 @@ class TeamMembersController < ApplicationController
 	def stay
 		@team_member = TeamMember.find(params[:id])
 		if current_participant == proposal_leader(@team_member.proposal)
+			ParticipantMailer.stay_email(@team_member).deliver_later
 			@team_member.stay
 		end
 		redirect_to root_path
