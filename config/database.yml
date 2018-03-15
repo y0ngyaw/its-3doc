@@ -20,12 +20,13 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  username: y0ngyaw
-  password: qwertyuiop
+
 
 development:
   <<: *default
+  host: localhost
+  username: y0ngyaw
+  password: qwertyuiop
   database: its-3doc_development
 
   # The specified database role being used to connect to postgres.
@@ -60,6 +61,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: localhost
+  username: y0ngyaw
+  password: qwertyuiop
   database: its-3doc_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
