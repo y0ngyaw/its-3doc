@@ -38,4 +38,12 @@ class Participant < ApplicationRecord
         SecureRandom.hex(5)
     end 
 
+    def self.no_team_member_reminder 
+        participants = Participant.all 
+        participants.each do |p| 
+            if !p.proposal.nil? && p.proposal.team_members.count == 0
+                ParticipantMailer.no_team_member_email(p).deliver_later
+            end 
+        end 
+    end
 end

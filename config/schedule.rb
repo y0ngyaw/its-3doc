@@ -19,7 +19,13 @@
 
 # Learn more: http://github.com/javan/whenever
 
-
-every :monday, :at => '9am' do 
-	rake 'send_no_team_member_email'
+case @environment
+when 'production'
+  every :monday, :at => '9am' do 
+	runner "Participant.no_team_member_reminder", output: { error: "#{path}/log/error.log", standard: "#(path}/log/cron.log" }
+end  
+when 'development'
+  every :monday, :at => '9am' do 
+	runner "Participant.no_team_member_reminder", output: { error: "#{path}/log/error.log", standard: "#(path}/log/cron.log" }
 end 
+end
