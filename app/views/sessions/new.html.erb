@@ -6,10 +6,16 @@
 	<div class="login-container">
 		<%= form_for(:session, url: login_path, html: {class: 'login-form-group'}) do |f| %>
 			<%= f.label :email, class: 'form-label' %>
-			<%= f.email_field :email, class: 'form-input' %>
+			<div class="email-input">
+				<%= f.email_field :email, class: 'form-input' %>
+				<span class="input-underline">
+			</div>
 
 			<%= f.label :password, class: 'form-label' %>
-			<%= f.password_field :password, class: 'form-input' %>
+			<div class="password-input">
+				<%= f.password_field :password, class: 'form-input' %>
+				<span class="input-underline"></span>
+			</div>
 			
 			<%= f.label :remember_me, class: 'remember-me-label' do %>
 				<%= f.check_box :remember_me, class: 'checkbox' %>

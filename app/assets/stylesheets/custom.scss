@@ -201,6 +201,10 @@ footer {
 	background-color: transparent;
 }
 
+.proposal:last-child::after {
+	display: none;
+}
+
 .theme-icon {
 	display: block;
 	height: 100%;
@@ -380,6 +384,11 @@ footer {
 	left: 5%;
 	border-bottom: 1px solid #ADACAC;
 	background-color: transparent;
+}
+
+.pending-row:last-child::after,
+.team-member-row:last-child::after {
+	display: none;
 }
 
 .data-row {
@@ -630,6 +639,7 @@ footer a:hover {
 
 	.body-container {
 		margin-top: 75px;
+		margin-bottom: 25px;
 		min-width: 100%;
 	}
 
