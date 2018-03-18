@@ -2,8 +2,12 @@
 	<div class="image-container">
 		<%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "logo-img" %>
 	</div>
-	
+
 	<div class="login-container">
+		<% flash.each do |message_type, message| %>
+		  <div class="alert alert-<%= message_type %>"><%= message %></div>
+		<% end %>
+
 		<%= form_for(:session, url: login_path, html: {class: 'login-form-group'}) do |f| %>
 			<%= f.label :email, class: 'form-label' %>
 			<div class="email-input">
