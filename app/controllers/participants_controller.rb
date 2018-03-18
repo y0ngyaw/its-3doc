@@ -1,6 +1,5 @@
 class ParticipantsController < ApplicationController
-	before_action :correct_participant, only: [:edit, :update]
-	before_action :only_admin, only: [:new, :create]
+	before_action :only_admin, only: [:new, :create, :edit, :update, :index]
 	
 	def new
 		@participant = Participant.new
@@ -24,6 +23,7 @@ class ParticipantsController < ApplicationController
 	end 
 
 	def index
+		@participants = Participant.all 
 	end 
 
 	def edit
@@ -44,15 +44,9 @@ class ParticipantsController < ApplicationController
 		end 
 	end 
 
-
 	private
 	def participant_params
 		params.require(:participant).permit(:name, :email, :password, :phone_num)
-	end 
-
-	def correct_participant
-		@participant = Participant.find(params[:id])
-		redirect_to edit_participant_path(current_participant) unless current_participant?(@participant)
 	end 
 
 	def only_admin

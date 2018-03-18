@@ -1,0 +1,53 @@
+<div class="body-container">
+	<div class="all-participant panel-shadow">
+		<div class="all-participant-title-row">
+			<div class="all-participant-title">
+				Existing Participants
+			</div>
+			<div class="back-main-page">
+				<%= link_to "Back", proposals_path, class: 'back-main-page-link' %>
+			</div>
+		</div>
+
+		<div class="all-participant-row all-participant-header">
+			<div class="all-participant-count all-participant-label">
+				No. 
+			</div>
+			<div class="all-participant-name all-participant-label">
+				Name
+			</div>
+			<div class="all-participant-email all-participant-label">
+				Email
+			</div>
+			<div class="all-participant-contact all-participant-label">
+				Contact
+			</div>
+			<div class="all-participant-admin all-participant-label">
+				Admin
+			</div>
+		</div>
+
+		<% @participants.each_with_index do |participant, i| %>
+			<div class="all-participant-row">
+				<div class="all-participant-count">
+					<%= i+1 %>
+				</div>
+				<div class="all-participant-name">
+					<%= link_to edit_participant_path(participant.id), remote: true do %>
+						<%= participant.name %>
+					<% end %>
+				</div>
+				<div class="all-participant-email">
+					<%= participant.email %>
+				</div>
+				<div class="all-participant-contact">
+					<%= participant.phone_num %>
+				</div>
+				<div class="all-participant-admin">
+					<%= participant.admin %>
+				</div>
+			</div>
+		<% end %>
+
+	</div>
+</div>

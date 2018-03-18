@@ -2,7 +2,7 @@
 <html>
   <head>
     <%= favicon_link_tag '3doc_logo.ico' %>
-    <title>ITS-3doc</title>
+    <title>Hackathon - 3 Days of Code</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,16 +14,25 @@
   	<div class="navbar">
       <button type="button" class="small-screen-btn" id="small-screen-btn"><span class="glyphicon glyphicon-stats"></span></button>
 	    <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
-	    <% if logged_in? %>
-        <% if current_participant.admin %>
-          <%= button_to new_participant_path, method: :get, remote: true, class: 'new-btn' do %>
-            <span class="glyphicon glyphicon-user"></span><span class="new-participant-word">New Participant</span>
+
+      <div class="navbar-btn-group">
+  	    <% if logged_in? %>
+          <%= button_to logout_path, method: 'delete', class: 'logout-btn' do %>
+            <span class="glyphicon glyphicon-log-out"></span><div class="logout-word">Logout</div>
+          <% end  %>
+          
+          <% if current_participant.admin %>
+            <%= button_to new_participant_path, method: :get, remote: true, class: 'new-btn' do %>
+              <span class="glyphicon glyphicon-user"></span><div class="new-participant-word">New <span class="half-word">Participant</span></div>
+            <% end %>
+            
+            <%= button_to participants_path, method: :get, class: 'all-participant-btn' do %>
+              <span class=" glyphicon glyphicon-list-alt"></span><div class="all-participant-word">All <span class="half-word">Participants</span></div>
+            <% end %>
           <% end %>
-        <% end %>
-        <%= button_to logout_path, method: 'delete', class: 'logout-btn' do %>
-          <span class="glyphicon glyphicon-log-out"></span><span class="logout-word">Logout</span>
-        <% end  %>
-	    <% end %>
+          
+  	    <% end %>
+      </div>
   	</div>
     <%= yield %>
   </body>
