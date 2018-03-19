@@ -1,53 +1,95 @@
 <div class="body-container">
-	<div class="all-participant panel-shadow">
-		<div class="all-participant-title-row">
-			<div class="all-participant-title">
-				Existing Participants
+	<div class="all-data">
+		<div class="all-participant panel-shadow">
+			<div class="all-participant-title-row">
+				<div class="all-participant-title">
+					Existing Participants
+				</div>
+				<div class="back-main-page">
+					<%= link_to "Back", proposals_path, class: 'back-main-page-link' %>
+				</div>
 			</div>
-			<div class="back-main-page">
-				<%= link_to "Back", proposals_path, class: 'back-main-page-link' %>
+
+			<div class="all-participant-row all-participant-header">
+				<div class="all-participant-count all-participant-label">
+					No. 
+				</div>
+				<div class="all-participant-name all-participant-label">
+					Name
+				</div>
+				<div class="all-participant-email all-participant-label">
+					Email
+				</div>
+				<div class="all-participant-contact all-participant-label">
+					Contact
+				</div>
+				<div class="all-participant-admin all-participant-label">
+					Status
+				</div>
 			</div>
+
+			<% @participants.each_with_index do |participant, i| %>
+				<div class="all-participant-row">
+					<div class="all-participant-count">
+						<%= i+1 %>
+					</div>
+					<div class="all-participant-name">
+						<%= link_to edit_participant_path(participant.id), remote: true do %>
+							<%= participant.name %>
+						<% end %>
+					</div>
+					<div class="all-participant-email">
+						<%= participant.email %>
+					</div>
+					<div class="all-participant-contact">
+						<%= participant.phone_num %>
+					</div>
+					<div class="all-participant-status">
+						<% if participant.proposal.nil? %>
+							<% if participant.team_member.nil? %>
+								No Team
+							<% else %>
+								In Team
+							<% end %>
+						<% else %>
+							Leader
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+
 		</div>
 
-		<div class="all-participant-row all-participant-header">
-			<div class="all-participant-count all-participant-label">
-				No. 
+		<div class="all-team panel-shadow">
+			<div class="all-team-title">
+				All Teams and Team Members
 			</div>
-			<div class="all-participant-name all-participant-label">
-				Name
-			</div>
-			<div class="all-participant-email all-participant-label">
-				Email
-			</div>
-			<div class="all-participant-contact all-participant-label">
-				Contact
-			</div>
-			<div class="all-participant-admin all-participant-label">
-				Admin
-			</div>
+
+			<% count = 1 %>
+			<% @participants.each do |participant| %>
+				<% if !participant.proposal.nil? %>
+					<div class="team">
+						<div class="all-team-count">
+							<%= count %>
+						</div>
+						<div class="all-team-proposal-title">
+							Title: <%= participant.proposal.title %>
+						</div>
+						<div class="all-team-leader-name">
+							Leader: <%= participant.name %>
+						</div>
+
+						<% participant.proposal.team_members.each do |tm| %>
+							<div class="all-team-member-name">
+								Member: <%= tm.participant.name %>
+							</div>
+						<% end %>
+
+						<% count = count + 1 %>
+					</div>
+				<% end %>
+			<% end %>
 		</div>
-
-		<% @participants.each_with_index do |participant, i| %>
-			<div class="all-participant-row">
-				<div class="all-participant-count">
-					<%= i+1 %>
-				</div>
-				<div class="all-participant-name">
-					<%= link_to edit_participant_path(participant.id), remote: true do %>
-						<%= participant.name %>
-					<% end %>
-				</div>
-				<div class="all-participant-email">
-					<%= participant.email %>
-				</div>
-				<div class="all-participant-contact">
-					<%= participant.phone_num %>
-				</div>
-				<div class="all-participant-admin">
-					<%= participant.admin %>
-				</div>
-			</div>
-		<% end %>
-
 	</div>
+
 </div>

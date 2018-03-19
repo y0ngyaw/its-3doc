@@ -74,10 +74,9 @@
 }
 
 .update-btn,
-.create-btn {
-	border: 1px solid #EA6E2D;
+.create-btn,
+.c-btn {
 	font-size: 100%;
-	color: #EA6E2D;
 	background-color: transparent;
 	width: 25%;
 	padding: 1%;
@@ -86,8 +85,31 @@
 	transition: background-color 0.5s ease;
 }
 
+.update-btn,
+.create-btn {
+	border: 1px solid #EA6E2D;
+	color: #EA6E2D;
+}
+
 .update-btn:hover,
 .create-btn:hover {
 	background-color: #EA6E2D;
 	color: #fff;
+}
+
+.warning-border {
+	border: 1.5px solid #C90A1B;
+}
+
+.disabled-btn {
+	background-color: #7A7A7A;
+	border: 1px solid #7A7A7A; 
+	color: #fff;
+	opacity: 0.5;
+	cursor: default !important;
+	border: none;
+}
+
+.e-message {
+	text-align: left !important;
 }

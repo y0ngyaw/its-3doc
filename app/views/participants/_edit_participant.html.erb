@@ -10,32 +10,22 @@
 		
 		<div class="edit-participant-form-group">
 			<%= form_for @participant, class: 'edit-participant-form-group' do |f| %>
-				<div class="edit-participant-row">
+				<div class="edit-participant-row", id="edit-participant-name-row">
 					<%= f.label :name, class: 'edit-participant-label' %>
-					<%= f.text_field :name, class: 'edit-participant-input' %>
+					<%= f.text_field :name, class: 'edit-participant-input', id: 'edit-participant-name' %>
 				</div>
 				
-				<div class="edit-participant-row">
+				<div class="edit-participant-row", id="edit-participant-email-row">
 					<%= f.label :email, class: 'edit-participant-label' %>
-					<%= f.text_field :email, class: 'edit-participant-input' %>
+					<%= f.text_field :email, class: 'edit-participant-input', id: 'edit-participant-email' %>
 				</div>
 
-				<div class="edit-participant-row">
-					<%= f.label :password, class: 'edit-participant-label' %>
-					<%= f.password_field :password, class: 'edit-participant-input' %>
-				</div>
-				
-				<div class="edit-participant-row">
-					<%= f.label :password_confirmation, class:'edit-participant-label' %>
-					<%= f.password_field :password, class: 'edit-participant-input' %>
-				</div>
-
-				<div class="edit-participant-row">
+				<div class="edit-participant-row", id="edit-participant-contact-row">
 					<%= f.label 'Phone Number', class: 'edit-participant-label' %>
-					<%= f.text_field :phone_num, class: 'edit-participant-input' %>
+					<%= f.text_field :phone_num, class: 'edit-participant-input', id: 'edit-participant-contact' %>
 				</div>
 				
-				<%= f.submit 'Update', class: 'update-btn' %>
+				<%= f.submit 'Update', class: 'c-btn update-btn' %>
 			<% end %>
 		</div>
 	</div>

@@ -1,18 +1,20 @@
-.all-participant {
+.all-data {
 	width: 100%;
+}
+
+.all-participant {
 	height: max-content;
-	margin: 2% 5%;
 	font-size: 110%;
+	margin: 1%;
 	padding: 2%;
 }
 
 .all-participant-title-row {
-	padding: 0 0 2% 2%;
+	padding: 0 0 1.5% 2%;
 }
 
 .all-participant-title,
 .back-main-page {
-	display: inline-block;
 	float: left;
 	font-size: 135%;
 	text-align: left;
@@ -30,6 +32,7 @@
 .all-participant-row {
 	display: block;
 	width: 100%;
+	margin-bottom: 1%;
 }
 
 .all-participant-header::after {
@@ -70,9 +73,48 @@
 	width: 20%;
 }
 
-.all-participant-admin {
+.all-participant-status {
 	display: inline-block;
 	float: left;
 	width: 15%;
 }
 
+.all-team {
+	margin: 3% 1%;
+	padding: 2%;
+	font-size: 110%;
+}
+
+.all-team-title {
+	text-align: left;
+	font-size: 135%;
+	font-weight: bold;
+	padding: 0 0 1.5% 2%;
+}
+
+.team {
+	padding-bottom: 1%;
+}
+
+.all-team-count {
+	display: inline-block;
+	text-align: center;
+	width: 10%;
+	float: left;
+}
+
+.all-team-proposal-title {
+	display: inline-block;
+	float: left;
+	text-align: left;
+	width: 90%;
+}
+
+.all-team-leader-name,
+.all-team-member-name {
+	display: block;
+    float: left;
+    text-align: left;
+    padding-left: 12%;
+    width: 100%;
+}

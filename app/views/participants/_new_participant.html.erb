@@ -10,32 +10,22 @@
 		
 		<div class="new-participant-form-group">
 			<%= form_for @participant, class: 'new-participant-form-group' do |f| %>
-				<div class="new-participant-row">
+				<div class="new-participant-row", id="new-participant-name-row">
 					<%= f.label :name, class: 'new-participant-label' %>
-					<%= f.text_field :name, class: 'new-participant-input' %>
+					<%= f.text_field :name, class: 'new-participant-input', id: 'new-participant-name' %>
 				</div>
 				
-				<div class="new-participant-row">
+				<div class="new-participant-row", id="new-participant-email-row">
 					<%= f.label :email, class: 'new-participant-label' %>
-					<%= f.text_field :email, class: 'new-participant-input' %>
+					<%= f.text_field :email, class: 'new-participant-input', id: 'new-participant-email' %>
 				</div>
 
-				<div class="new-participant-row">
-					<%= f.label :password, class: 'new-participant-label' %>
-					<%= f.password_field :password, class: 'new-participant-input' %>
-				</div>
-				
-				<div class="new-participant-row">
-					<%= f.label :password_confirmation, class:'new-participant-label' %>
-					<%= f.password_field :password, class: 'new-participant-input' %>
-				</div>
-
-				<div class="new-participant-row">
+				<div class="new-participant-row", id="new-participant-contact-row">
 					<%= f.label 'Phone Number', class: 'new-participant-label' %>
-					<%= f.text_field :phone_num, class: 'new-participant-input' %>
+					<%= f.text_field :phone_num, class: 'new-participant-input', id: 'new-participant-contact' %>
 				</div>
 				
-				<%= f.submit 'Create Participant', class: 'create-btn' %>
+				<%= f.submit 'Create Participant', class: 'c-btn disabled-btn' %>
 			<% end %>
 		</div>
 	</div>

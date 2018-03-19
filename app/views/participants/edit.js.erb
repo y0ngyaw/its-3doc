@@ -1,5 +1,9 @@
 $('body').append("<%= escape_javascript(render partial: 'participants/edit_participant') %>");
 
+var n = true;
+var email = true;
+var contact = true;
+
 $('#edit-participant-container').on('click', function(e) {
 	  if (e.target !== this)
 	    return;
@@ -12,4 +16,72 @@ $('#close-btn').on('click', function(){
 	$('#edit-participant-container').fadeOut(500, function() {
 	  	$('#edit-participant-container').remove();
 	});
-})
+});
+
+$('#edit-participant-name').on('change keyup paste', function(e) {
+	var length = $(this).val().length;
+	n = checkIfNull(this, length);
+});
+
+$('#edit-participant-email').on('change keyup paste', function(e) {
+	var length = $(this).val().length;
+	email = checkIfNull(this, length);
+});
+
+$('#edit-participant-contact').on('change keyup paste', function(e) {
+	var length = $(this).val().length;
+	contact = checkIfNull(this, length);
+});
+
+$('#edit-participant-name, #edit-participant-email, #edit-participant-contact').on('change keyup paste', function() {
+	if(n && email && contact) {
+		$('.c-btn').removeClass("disabled-btn");
+		$('.c-btn').addClass("update-btn")
+	}
+	else {
+		$('.c-btn').removeClass("update-btn");
+		$('.c-btn').addClass("disabled-btn");
+	}
+});
+
+$('.c-btn').click(function(event) {
+	$('.error-message').remove();
+	if(!n) {
+		event.preventDefault();
+		$("#edit-participant-name").addClass("warning-border");
+		$("#edit-participant-name-row").append('<div class="error-message e-message">This field is required</div>');
+	}
+	else {
+		$("#edit-participant-name-row > .error-message").remove();
+	}
+
+	if(!email) {
+		event.preventDefault();
+		$("#edit-participant-email").addClass("warning-border");
+		$("#edit-participant-email-row").append('<div class="error-message e-message">This field is required</div>');
+	}
+	else {
+		$("#edit-participant-email-row > .error-message").remove();
+	}
+
+	if(!contact) {
+		event.preventDefault();
+		$("#edit-participant-contact").addClass("warning-border");
+		$("#edit-participant-contact-row").append('<div class="error-message e-message">This field is required</div>');
+	}
+	else {
+		$("#edit-participant-contact-row > .error-message").remove();
+	}
+});
+
+function checkIfNull(destination, length) {
+	var content = $(destination).val();
+	if(length === 0 || $.trim($(destination).val()) == '') {
+		$(destination).addClass("warning-border");
+		return false;
+	}
+	else {
+		$(destination).removeClass("warning-border");
+		return true;
+	}
+};

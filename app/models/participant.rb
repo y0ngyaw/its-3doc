@@ -34,8 +34,8 @@ class Participant < ApplicationRecord
     	update_attribute(:remember_digest, nil)
     end 
 
-    def secure_password
-        SecureRandom.hex(5)
+    def generate_password
+        self.password = SecureRandom.hex(4)
     end 
 
     def self.no_team_member_reminder 

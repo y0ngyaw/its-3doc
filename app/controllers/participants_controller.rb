@@ -12,7 +12,7 @@ class ParticipantsController < ApplicationController
 
 	def create
 		@participant = Participant.new(participant_params)
-		@password = @participant.password
+		@password = @participant.generate_password
 		if @participant.save
 			ParticipantMailer.participant_created(@participant, @password).deliver_later
 			redirect_to root_path
@@ -23,7 +23,7 @@ class ParticipantsController < ApplicationController
 	end 
 
 	def index
-		@participants = Participant.all 
+		@participants = Participant.eager_load(:proposal) 
 	end 
 
 	def edit
@@ -38,15 +38,15 @@ class ParticipantsController < ApplicationController
 	def update
 		@participant = Participant.find(params[:id])
 		if @participant.update_attributes(participant_params)
-			redirect_to proposals_path
+			redirect_to participants_path
 		else 
-			redirect_to proposals_path
+			redirect_to participants_path
 		end 
 	end 
 
 	private
 	def participant_params
-		params.require(:participant).permit(:name, :email, :password, :phone_num)
+		params.require(:participant).permit(:name, :email, :phone_num)
 	end 
 
 	def only_admin
