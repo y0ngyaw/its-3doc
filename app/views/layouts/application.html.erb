@@ -13,7 +13,9 @@
   <body class="main-page-body">
   	<div class="navbar">
       <button type="button" class="small-screen-btn" id="small-screen-btn"><span class="glyphicon glyphicon-stats"></span></button>
-	    <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
+      <%= link_to "http://www.3daysofcode.org" do %>
+	     <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
+      <% end %>
 
       <div class="navbar-btn-group">
   	    <% if logged_in? %>
