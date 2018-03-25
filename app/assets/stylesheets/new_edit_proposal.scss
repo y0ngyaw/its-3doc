@@ -179,7 +179,6 @@
 	border: none;
 	font-size: 125%;
 	margin-top: 0.5%;
-	padding: 0;
 }
 
 .error-message {
@@ -216,6 +215,10 @@
 	.new-proposal-form-group,
 	.edit-proposal-form-group {
 		width: 85%;
+	}
+
+	.close-btn {
+		padding: 0;
 	}
 
 	.new-proposal-title,
