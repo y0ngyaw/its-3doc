@@ -39,7 +39,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
   config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => 'http://its-3doc-production-env.8fgpa9wwnj.ap-southeast-1.elasticbeanstalk.com'
+      'Access-Control-Allow-Origin' => 'http://its-3doc-production-env.8fgpa9wwnj.ap-southeast-1.elasticbeanstalk.com',
       'Access-Control-Request-Method' => '*'
   }
 
