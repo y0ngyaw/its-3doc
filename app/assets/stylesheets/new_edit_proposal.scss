@@ -191,11 +191,33 @@
     width: 45%;
 }
 
+.idea-link {
+	display: block;
+	margin-top: 0.5%;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.new-proposal-container,
+	.edit-proposal-container {
+		overflow-y: scroll;
+	}
+
 	.new-proposal-panel,
 	.edit-proposal-panel {
 		width: 80%;
 		margin-top: 8%;
+	}
+}
+
+@media only screen and (max-height: 480px) and (max-width: 767px) {
+	.new-proposal-panel,
+	.edit-proposal-panel {
+		padding-bottom: 1%;
+	}
+
+	.new-proposal-title,
+	.edit-proposal-title {
+		padding-top: 8%;
 	}
 }
 
@@ -281,5 +303,9 @@
 	.delete-btn {
 		background-color: #D75E53;
 		color: #fff;
+	}
+
+	.idea-link {
+		margin-top: 1%;
 	}
 }
