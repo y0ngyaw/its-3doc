@@ -11,7 +11,7 @@
 			<div class="project">
 				<% @projects.each do |project| %>
 					<% if project.theme == 1 %>
-						<%= link_to project.documentation.url, class: "each-project" do %>
+						<%= link_to project.documentation.url, target: '_blank', class: "each-project" do %>
 							<div class="image-wrapper">
 								<%= image_tag "dataicon.png", class: "icon" %>
 							</div>
@@ -53,7 +53,7 @@
 			<div class="project">
 				<% @projects.each do |project| %>
 					<% if project.theme == 2 %>
-						<%= link_to project.documentation.url, class: 'each-project' do %>
+						<%= link_to project.documentation.url, target: '_blank', class: 'each-project' do %>
 							<div class="image-wrapper">
 								<%= image_tag "educationicon.png", class: "icon" %>
 							</div>
@@ -95,7 +95,7 @@
 			<div class="project">
 				<% @projects.each do |project| %>
 					<% if project.theme == 3 %>
-						<%= link_to project.documentation.url, class: 'each-project' do %>
+						<%= link_to project.documentation.url, target: '_blank', class: 'each-project' do %>
 							<div class="image-wrapper">
 								<%= image_tag "financeicon.png", class: "icon" %>
 							</div>
