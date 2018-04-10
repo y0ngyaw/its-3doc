@@ -1,7 +1,8 @@
 class SponsorsController < ApplicationController
 	layout "sponsor_page_layout"
 	include SponsorSessionsHelper
-	before_action :admin_only, only: [:new, :create, :index, :delete]
+	before_action :logged_in_sponsor, only: [:new, :create, :index, :destroy]
+	before_action :admin_only, only: [:new, :create, :index, :destroy]
 
 	def new
 		@sponsor = Sponsor.new
@@ -39,6 +40,10 @@ class SponsorsController < ApplicationController
 	end 
 
 	def admin_only
-		redirect_to projects_path unless sponsor_logged_in? && current_sponsor.admin?
+		redirect_to projects_path unless current_sponsor.admin?
+	end 
+
+	def logged_in_sponsor
+		redirect_to sponsor_login_path unless sponsor_logged_in?
 	end 
 end
