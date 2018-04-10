@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= favicon_link_tag '3doc_logo.ico' %>
+    <title>Hackathon - 3 Days of Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,700|Lato" rel="stylesheet">
+  </head>
+
+  <body class="main-page-body">
+  	<div class="navbar">
+      <%= link_to "http://www.3daysofcode.org" do %>
+	     <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
+      <% end %>
+
+      <div class="navbar-btn-group">
+  	    <% if sponsor_logged_in? %>
+          <%= button_to sponsor_logout_path, method: 'delete', class: 'logout-btn' do %>
+            <%= material_icon.exit_to_app %><div class="logout-word">Logout</div>
+          <% end  %>
+
+          <% if current_sponsor.admin %>
+            <%= button_to new_sponsor_path, method: :get, remote: true, class: 'new-btn' do %>
+              <%= material_icon.account_box %></span><div class="new-participant-word">New <span class="half-word">Sponsor</span></div>
+            <% end %>
+            
+            <%= button_to sponsors_path, method: :get, class: 'all-participant-btn' do %>
+              <%= material_icon.list %></span><div class="all-participant-word">All <span class="half-word">Sponsors</span></div>
+            <% end %>
+          <% end %>          
+  	    <% end %>
+      </div>
+  	</div>
+    <%= yield %>
+  </body>
+  <footer>
+    For more information, feel free to contact us at <%= mail_to "itsoc.mmu@gmail.com" %>.
+  </footer>
+</html>

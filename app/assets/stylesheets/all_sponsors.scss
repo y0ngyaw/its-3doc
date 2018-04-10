@@ -1,0 +1,68 @@
+.all-data {
+	width: 100%;
+}
+
+.all-sponsor {
+	height: max-content;
+	font-size: 110%;
+	margin: 1%;
+	padding: 2%;
+}
+
+.all-sponsor-title-row {
+	padding: 0 0 1.5% 2%;
+}
+
+.all-sponsor-title,
+.back-main-page {
+	float: left;
+	font-size: 135%;
+	text-align: left;
+	font-weight: bold;
+}
+
+.all-sponsor-title {
+	padding-right: 2%;
+}
+
+.back-main-page {
+	padding-left: 2%;
+}
+
+.all-sponsor-row {
+	display: block;
+	width: 100%;
+	margin-bottom: 1%;
+}
+
+.all-sponsor-header::after {
+	content: "";
+	height: 1px;
+	width: 100%;
+	display: inline-block;
+	border-bottom: 1px solid;
+	opacity: 0.2;
+}
+
+.all-sponsor-label {
+	text-align: center;
+	font-weight: bold;
+}
+
+.all-sponsor-count {
+	display: inline-block;
+	float: left;
+	width: 10%
+}
+
+.all-sponsor-email {
+	display: inline-block;
+	float: left;
+	width: 75%;
+}
+
+.all-sponsor-option {
+	display: inline-block;
+	float: left;
+	width: 15%;
+}

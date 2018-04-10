@@ -1,0 +1,132 @@
+<div class="body-container">
+	<div class="all-projects">
+		<div class="category-wrapper">
+			<div class="project-category-data">
+				Data
+				<% if current_sponsor.admin? %>
+					<%= link_to "New Project", new_project_path, remote: true, class: 'new-project' %>
+				<% end %>
+			</div>
+			
+			<div class="project">
+				<% @projects.each do |project| %>
+					<% if project.theme == 1 %>
+						<%= link_to project.documentation.url, class: "each-project" do %>
+							<div class="image-wrapper">
+								<%= image_tag "dataicon.png", class: "icon" %>
+							</div>
+							
+							<div class="project-details">
+								<div class="project-title">
+									<%= project.title %>
+								</div>
+
+								<div class="project-description">
+									<%= project.description %>
+								</div>
+
+								<div class="project-tech">
+									Technology Applied: <%= project.tech %>
+								</div>
+							</div>
+
+							<div class="attachment-icon">
+								<% if current_sponsor.admin? %>
+									<%= button_to edit_project_path(project), method: :get, remote: true, class: 'edit-project-icon' do %>
+										<%= material_icon.mode_edit %>
+									<% end %>
+								<% else %>
+									<%= material_icon.attach_file %>
+								<% end %>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="category-wrapper">
+			<div class="project-category-education">
+				Education
+			</div>
+			
+			<div class="project">
+				<% @projects.each do |project| %>
+					<% if project.theme == 2 %>
+						<%= link_to project.documentation.url, class: 'each-project' do %>
+							<div class="image-wrapper">
+								<%= image_tag "educationicon.png", class: "icon" %>
+							</div>
+
+							<div class="project-details">
+								<div class="project-title">
+									<%= project.title %>
+								</div>
+
+								<div class="project-description">
+									<%= project.description %>
+								</div>
+
+								<div class="project-tech">
+									Technology Applied: <%= project.tech %>
+								</div>
+							</div>
+
+							<div class="attachment-icon">
+								<% if current_sponsor.admin? %>
+									<%= button_to edit_project_path(project), method: :get, remote: true, class: 'edit-project-icon' do %>
+										<%= material_icon.mode_edit %>
+									<% end %>
+								<% else %>
+									<%= material_icon.attach_file %>
+								<% end %>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="category-wrapper">
+			<div class="project-category-finance">
+				Finance
+			</div>
+			
+			<div class="project">
+				<% @projects.each do |project| %>
+					<% if project.theme == 3 %>
+						<%= link_to project.documentation.url, class: 'each-project' do %>
+							<div class="image-wrapper">
+								<%= image_tag "financeicon.png", class: "icon" %>
+							</div>
+
+							<div class="project-details">
+								<div class="project-title">
+									<%= project.title %>
+								</div>
+
+								<div class="project-description">
+									<%= project.description %>
+								</div>
+
+								<div class="project-tech">
+									Technology Applied: <%= project.tech %>
+								</div>
+							</div>
+
+							<div class="attachment-icon">
+								<% if current_sponsor.admin? %>
+									<%= button_to edit_project_path(project), method: :get, remote: true, class: 'edit-project-icon' do %>
+										<%= material_icon.mode_edit %>
+									<% end %>
+								<% else %>
+									<%= material_icon.attach_file %>
+								<% end %>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

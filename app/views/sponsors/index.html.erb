@@ -1,0 +1,41 @@
+<div class=body-container>
+	<div class="all-data">
+		<div class="all-sponsor panel-shadow">
+			<div class="all-sponsor-title-row">
+				<div class="all-sponsor-title">
+					All Sponsors
+				</div>
+				<div class="back-main-page">
+					<%= link_to "Back", projects_path, class: 'back-main-page-link' %>
+				</div>
+			</div>
+			
+			<div class="all-sponsor-row all-sponsor-header">
+				<div class="all-participant-count all-participant-label">
+					No. 
+				</div>
+				<div class="all-sponsor-email all-sponsor-label">
+					Email
+				</div>
+				<div class="all-sponsor-option all-sponsor-label">
+					Option
+				</div>
+			</div>
+
+			<% @sponsors.each_with_index do |sponsor, i| %>
+				<div class="all-sponsor-row">
+					<div class="all-sponsor-count">
+						<%= i+1 %>
+					</div>
+					<div class="all-sponsor-email">
+						<%= sponsor.email %>
+					</div>
+					<div class="all-sponsor-delete">
+						<%= link_to "Delete", sponsor_path(sponsor), method: :delete %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+</div>

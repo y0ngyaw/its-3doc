@@ -1,0 +1,22 @@
+<div class="new-sponsor-container" id="new-sponsor-container">
+	<div class="new-sponsor-panel">
+		<%= button_tag(class: 'close-btn', id: 'close-btn') do %>
+			<%= material_icon.clear %>
+		<% end %>
+
+		<div class="new-sponsor-title">
+			Registering a new sponsor...
+		</div>
+		
+		<div class="new-sponsor-form-group">
+			<%= form_for @sponsor, class: 'new-sponsor-form-group' do |f| %>				
+				<div class="new-sponsor-row", id="new-sponsor-email-row">
+					<%= f.label :email, class: 'new-sponsor-label' %>
+					<%= f.text_field :email, class: 'new-sponsor-input', id: 'new-sponsor-email' %>
+				</div>
+				
+				<%= f.submit 'Register', class: 'c-btn disabled-btn' %>
+			<% end %>
+		</div>
+	</div>
+</div>

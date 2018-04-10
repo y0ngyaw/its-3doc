@@ -1,0 +1,35 @@
+<div class="login-panel container">
+	<div class="image-container">
+		<%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "logo-img" %>
+	</div>
+	<div class="sponsor-header">
+		Sponsors Login
+	</div>
+
+	<div class="login-container">
+		<% flash.each do |message_type, message| %>
+		  <div class="alert alert-<%= message_type %>"><%= message %></div>
+		<% end %>
+
+		<%= form_for(:session, url: sponsor_login_path, html: {class: 'login-form-group'}) do |f| %>
+			<%= f.label :email, class: 'form-label' %>
+			<div class="email-input">
+				<%= f.email_field :email, class: 'form-input' %>
+				<span class="input-underline">
+			</div>
+
+			<%= f.label :password, class: 'form-label' %>
+			<div class="password-input">
+				<%= f.password_field :password, class: 'form-input' %>
+				<span class="input-underline"></span>
+			</div>
+			
+			<%= f.label :remember_me, class: 'remember-me-label' do %>
+				<%= f.check_box :remember_me, class: 'checkbox' %>
+				<div class="checkbox-label">Remember me</div>
+			<% end %>
+
+			<%= f.submit 'Login', class: 'login-button' %>
+		<% end %>
+	</div>
+</div>

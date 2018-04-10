@@ -19,4 +19,14 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
   end
+
+  scope '/sponsor' do 
+    resources :sponsors, only: [:new, :create, :index, :destroy]
+    resources :projects
+
+    get '/login', to: 'sponsor_sessions#new', as: 'sponsor_login'
+    post '/login', to: 'sponsor_sessions#create'
+    delete '/logout', to: 'sponsor_sessions#destroy', as: 'sponsor_logout'
+  end
+
 end

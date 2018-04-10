@@ -1,0 +1,74 @@
+<div class="new-project-container" id="new-project-container">
+	<div class="new-project-panel">
+		<%= button_tag(class: 'close-btn', id: 'close-btn') do %>
+			<%= material_icon.clear %>
+		<% end %>
+
+		<div class="new-project-title">
+			Uploading Project...
+		</div>
+		
+		<div class="new-project-form-group">
+			<%= form_for @project do |f| %>
+				<div class="new-project-row" id="title-row">
+					<%= f.label :title, class: 'new-project-label' %>
+					<%= f.text_field :title, maxlength: '65', placeholder: "A Progressive Web App", class: 'new-project-input', id: "title-input" %>
+					<div class="word-remain">
+						<span id="variable-num-title">65</span>/65 character(s) remaining.
+					</div>
+				</div>
+				
+				<div class="new-project-row" id="description-row">
+					<%= f.label :description, class: 'new-project-label' %>
+					<%= f.text_area :description, maxlength: '255', rows: '8', placeholder: "Your brief description goes here", class: 'new-project-textarea', id: "description-input" %>
+					<div class="word-remain">
+						<span id="variable-num-description">255</span>/255 character(s) remaining.
+					</div>
+				</div>
+
+				<div class="new-project-row" id="tech-row">
+					<%= f.label "Technology", class: 'new-project-label' %>
+					<%= f.text_field :tech, maxlength: '30', placeholder: "Ruby on Rails, Vue.js", class: 'new-project-input', id: "tech-input" %>
+					<div class="word-remain">
+						<span id="variable-num-tech">30</span>/30 character(s) remaining.
+					</div>
+				</div>
+				
+				<div class="new-project-row">
+					<div class="new-project-label" %>
+						Category
+					</div>
+
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Data", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 1, class: 'radio-btn' %>
+							<div class="radio-btn-label">Data</div>
+						<% end %>
+					</div>
+
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Education", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 2, class: 'radio-btn' %>
+							<div class="radio-btn-label">Education</div>
+						<% end %>
+					</div>
+					
+					<div class="radio-btn-column">
+						<%= f.label :theme, "Finance", class: 'radio-btn-group' do %>
+							<%= f.radio_button :theme, 3, class: 'radio-btn' %>
+							<div class="radio-btn-label">Finance</div>
+						<% end %>
+					</div>
+				</div>
+				
+				<div class="new-project-row">
+					<%= f.label :documentation, class: 'new-project-label' %>
+					<%= f.file_field :documentation, class: 'new-project-file-upload' %>
+				</div>
+
+				<%= f.submit 'Propose', class: 'p-btn disabled-btn' %>
+			<% end %>
+		</div>
+	</div>
+
+</div>
