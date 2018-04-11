@@ -23,7 +23,8 @@
 .project-category-finance {
 	position: relative;
 	text-align: left;
-	font-size: 145%;
+	font-size: 130%;
+	text-transform: uppercase;
 	font-weight: bold;
 	margin: 2% 0;
 }
@@ -129,6 +130,7 @@
 	font-size: 110%;
 	margin-top: 1%;
 	font-family: 'Lato', sans-serif;
+	opacity: 0.7;
 }
 
 .project .project-tech {
@@ -182,6 +184,7 @@
 	.project-category-data,
 	.project-category-education,
 	.project-category-finance {
+		font-size: 130%;
 		text-align: center;
 		margin: 5% 0 0;
 	}
