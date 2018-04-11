@@ -110,3 +110,9 @@
 .e-message {
 	text-align: left !important;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.new-sponsor-panel {
+		width: 80%;
+	}
+}

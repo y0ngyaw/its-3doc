@@ -61,7 +61,7 @@
 
 .each-project {
 	width: 100%;
-    min-height: 150px;
+    min-height: 160px;
     display: flex;
     color: #000;
     padding: 2% 0;
@@ -121,11 +121,13 @@
 	text-align: left;
 	font-size: 130%;
 	font-family: 'Lato', sans-serif;
+	font-weight: bold;
 }
 
 .project .project-description {
 	text-align: left;
 	font-size: 110%;
+	margin-top: 1%;
 	font-family: 'Lato', sans-serif;
 }
 
@@ -134,6 +136,11 @@
 	font-size: 110%;
 	margin-top: 1%;
 	font-family: 'Lato', sans-serif;
+}
+
+.project-tech-applied {
+	color: #526E86;
+	font-weight: bold;
 }
 
 .project .attachment-icon {
@@ -152,4 +159,68 @@
 
 .project .edit-project-icon i{
 	transform: rotate(0deg);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.all-projects {
+		width: 100%;
+		padding: 0 2.5%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.new-project {
+		display: none;
+	}
+
+	.all-projects {
+		width: 100%;
+		padding: 0; 
+		margin: 0;
+	}
+
+	.project-category-data,
+	.project-category-education,
+	.project-category-finance {
+		text-align: center;
+		margin: 5% 0 0;
+	}
+
+	.each-project {
+		background-color: transparent;
+	    padding: 4% 4% 4% 2%;
+		min-height: unset;
+	}
+
+	.each-project::before {
+		display: none;
+	}
+
+	.each-project:hover {
+		z-index: unset;
+		text-decoration: unset;
+		color: #000;
+		transform: unset;
+		box-shadow: unset;
+	}
+
+	.project .attachment-icon {
+		display: none;
+	}
+
+	.project .project-title {
+		font-size: 120%;
+	}
+
+	.project .project-description {
+		font-size: 100%;
+	}
+
+	.project .project-tech {
+		font-size: 100%;
+	}
+
+	.project .each-project~.each-project::after {
+		display: none;
+	}
 }

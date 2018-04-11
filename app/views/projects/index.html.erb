@@ -2,7 +2,7 @@
 	<div class="all-projects">
 		<div class="category-wrapper">
 			<div class="project-category-data">
-				Data
+				Theme: Data
 				<% if current_sponsor.admin? %>
 					<%= link_to "New Project", new_project_path, remote: true, class: 'new-project' %>
 				<% end %>
@@ -26,7 +26,7 @@
 								</div>
 
 								<div class="project-tech">
-									Technology Applied: <%= project.tech %>
+									<span class="project-tech-applied">Technology Applied: </span><%= project.tech %>
 								</div>
 							</div>
 
@@ -47,7 +47,7 @@
 		
 		<div class="category-wrapper">
 			<div class="project-category-education">
-				Education
+				Theme: Education
 			</div>
 			
 			<div class="project">
@@ -68,7 +68,7 @@
 								</div>
 
 								<div class="project-tech">
-									Technology Applied: <%= project.tech %>
+									<span class="project-tech-applied">Technology Applied: </span><%= project.tech %>
 								</div>
 							</div>
 
@@ -89,7 +89,7 @@
 		
 		<div class="category-wrapper">
 			<div class="project-category-finance">
-				Finance
+				Theme: Finance
 			</div>
 			
 			<div class="project">
@@ -110,7 +110,7 @@
 								</div>
 
 								<div class="project-tech">
-									Technology Applied: <%= project.tech %>
+									<span class="project-tech-applied">Technology Applied: </span><%= project.tech %>
 								</div>
 							</div>
 

@@ -19,7 +19,7 @@ class SponsorsController < ApplicationController
 		if @sponsor.save
 			redirect_to projects_path
 		else 
-			flash.now[:error] = "Failed to create a new participant"
+			flash.now[:error] = "Failed to register a sponsor"
 			redirect_to projects_path
 		end 
 	end 
