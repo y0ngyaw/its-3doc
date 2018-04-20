@@ -84,6 +84,14 @@
 					<div class="all-team-proposal-title">
 						Title: <%= proposal.title %>
 					</div>
+					<div class="all-team-proposal-exist">
+						Documentation: 
+						<% if proposal.documentation.exists? %>
+							<%= link_to "Uploaded", proposal.documentation.url, target: '_blank' %>
+						<% else %>
+							No documentation
+						<% end %>
+					</div>
 					<div class="all-team-leader-name">
 						Leader: <%= proposal.participant.name %>
 					</div>
