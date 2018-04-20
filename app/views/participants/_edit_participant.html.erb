@@ -24,6 +24,11 @@
 					<%= f.label 'Phone Number', class: 'edit-participant-label' %>
 					<%= f.text_field :phone_num, class: 'edit-participant-input', id: 'edit-participant-contact' %>
 				</div>
+
+				<div class="new-participant-row">
+					<%= f.check_box :sponsor, class: 'checkbox' %>
+					<%= f.label "Sponsor", class: 'sponsor-label'%>
+				</div>
 				
 				<%= f.submit 'Update', class: 'c-btn update-btn' %>
 			<% end %>

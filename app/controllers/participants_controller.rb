@@ -1,5 +1,5 @@
 class ParticipantsController < ApplicationController
-	before_action :only_admin, only: [:new, :create, :edit, :update, :index]
+	before_action :admin_only, only: [:new, :create, :edit, :update, :index]
 	
 	def new
 		@participant = Participant.new
@@ -15,7 +15,7 @@ class ParticipantsController < ApplicationController
 		@password = @participant.generate_password
 		if @participant.save
 			ParticipantMailer.participant_created(@participant, @password).deliver_later
-			redirect_to root_path
+			redirect_to participants_path
 		else 
 			flash.now[:error] = "Failed to create a new participant"
 			redirect_to root_path
@@ -23,7 +23,8 @@ class ParticipantsController < ApplicationController
 	end 
 
 	def index
-		@participants = Participant.eager_load(:proposal) 
+		@participants = Participant.eager_load(:proposal).order(:id) 
+		@proposals = Proposal.eager_load(:team_members).order(:title)
 	end 
 
 	def edit
@@ -46,10 +47,10 @@ class ParticipantsController < ApplicationController
 
 	private
 	def participant_params
-		params.require(:participant).permit(:name, :email, :phone_num)
+		params.require(:participant).permit(:name, :email, :phone_num, :sponsor)
 	end 
 
-	def only_admin
+	def admin_only
 		redirect_to root_path unless current_participant.admin
 	end 
 end

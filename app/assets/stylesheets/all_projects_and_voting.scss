@@ -1,0 +1,520 @@
+.body-container {
+	padding-bottom: 5vh;
+}
+
+.all-projects {
+	display: block;
+	width: 90%;
+    margin-top: 1%;
+    overflow: visible;
+    padding: 0 5%;
+}
+
+.category-wrapper {
+	overflow: inherit;
+}
+
+.project-category-data,
+.project-category-education,
+.project-category-finance,
+.project-category-top5,
+.project-category-other {
+	position: relative;
+	text-align: left;
+	font-size: 130%;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 2% 0;
+}
+
+.vote-remaining {
+	text-align: left;
+	margin: 1% 0;
+}
+
+.project-category-data {
+	color: #EA6E2D;
+}
+
+.project-category-education {
+	color: #1D94BF;
+}
+
+.project-category-finance {
+	color: #5C8A2B;
+}
+
+.new-project {
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	color: #526E86;
+	transition: all 0.5s ease;
+	margin-right: 2%;
+	text-decoration: none;
+}
+
+.new-project:hover {
+	transform: scale(1.1)
+}
+
+.sponsor-vote-btn-wrapper {
+	margin: 2% 0;
+}
+
+.sponsor-vote-btn {
+	width: 100%;
+	background-color: #526E86;
+	color: #fff;
+	padding: 1% 0;
+	font-size: 120%;
+	font-weight: bold;
+	transition: all 0.5s ease;
+}
+
+.sponsor-vote-btn:hover {
+	background-color: #3E5466;	
+}
+
+.project {
+	display: block;
+	overflow: inherit;
+}
+
+.each-project {
+	width: 100%;
+    min-height: 175px;
+    display: flex;
+    color: #000;
+    position: relative;
+    background-color: #f5f5f5;
+    overflow: inherit;
+    transition: all 0.5s ease;
+}
+
+.voted {
+	background-color: #D7E0E8;
+}
+
+.each-project:hover {
+	z-index: 2;
+	text-decoration: none;
+	color: #000;
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.each-project::before {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 2px;
+	border-left: 1px solid #D6DAE5;
+	left: 15%;
+	top: 0;
+}
+
+.project .each-project~.each-project::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 2px;
+	border-top: 1px solid #C6C9D4;
+}
+
+.project .image-wrapper {
+	flex: 0 1 15%;
+	margin-top: 0;
+	align-self: center;
+}
+
+.project .icon {
+	width: 70%;
+	max-width: 120px;
+}
+
+.project .project-details {
+	flex: 2 1 73%;
+	margin: 0 2%;
+	text-align: left;
+	align-self: center;
+}
+
+.project .project-title {
+	text-align: left;
+	font-size: 130%;
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+}
+
+.project .project-title span {
+	display: none;
+}
+
+.project .project-description,
+.project .project-team-member {
+	text-align: left;
+	margin-top: 1%;
+	font-family: 'Lato', sans-serif;
+	opacity: 0.7;
+}
+
+.project .project-tech {
+	text-align: left;
+	margin-top: 1%;
+	font-family: 'Lato', sans-serif;
+}
+
+.project .project-tech .small-screen-voted-label {
+	display: none;
+}
+
+.project-tech-applied {
+	color: #526E86;
+	font-weight: bold;
+}
+
+.project .attachment-icon {
+	flex: 1 1 10%;
+	align-self: center;
+}
+
+.project form {
+	flex: 1 1 12%;
+	display: flex;
+	position: relative;
+	max-width: 125px;
+	transition: all 0.5s ease;
+}
+
+.project form:hover {
+	background-color: #526E86;
+	color: #fff;
+}
+
+.project form .vote-btn {
+	align-self: center;
+	width: 100%;
+	height: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.project form::before {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 2px;
+	border-left: 1px solid #C6C9D4;
+	left: 0;
+	top: 0;
+}
+
+.project .voted-btn-area {
+	display: none;
+}
+
+.project .attachment-icon i{
+	transform: rotate(45deg);
+}
+
+.project .edit-project-icon {
+	background-color: transparent;
+	border: none;
+}
+
+.project .edit-project-icon i{
+	transform: rotate(0deg);
+}
+
+.vote-result {
+	display: block;
+	width: 100%;
+    margin-top: 1%;
+}
+
+.vote-result .vote-result-header {
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 130%;
+	font-weight: bold;
+	margin: 2% 8%;
+}
+
+.project-result {
+	background-color: #F0F0F0;
+    padding: 2%;
+    position: relative;
+    margin: 0 8%;
+}
+
+.project .project-result~.project-result::before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	border-top: 1px solid #D6DAE5;
+	top: 0;
+}
+
+.project-result .result-title {
+	font-size: 110%;
+	font-weight: bold;
+    margin: 0.5% 0;
+}
+
+.project-result .result-team {
+	color: #526E86;
+	font-weight: bold;
+}
+
+.project .result-1 {
+	background-color: #EBC245;
+}
+
+.project .result-2 {
+	background-color: #D0D0D0;
+}
+
+.project .result-3 {
+	background-color: #D3BC9A;
+}
+
+.redirect-container {
+	align-self: center;
+    margin-top: -20%;
+    font-size: 120%;
+    padding: 8%;
+}
+
+.chart {
+	min-height: 400px;
+	position: relative;
+}
+
+.chart-div::before {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: 100;
+	width: 100px;
+	height: 100px;
+	bottom: 0;
+	left: 0;
+	top: 0;
+	right: 0;
+	margin: auto;
+	border-radius: 50%;
+	border: 16px solid #F5F5F5;
+	border-top: 16px solid #526E86;
+	animation: loading-spin 2s linear infinite;
+}
+
+@keyframes loading-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.show-chart {
+	margin: 10% 0;
+}
+
+.show-chart-para {
+	font-size: 150%;
+	opacity: 0.6;
+}
+
+.show-chart-btn button {
+	background-color: transparent;
+	border: 1px solid #526E86;
+	color: #526E86;
+	padding: 0.5% 2%;
+	font-size: 110%;
+	margin-top: 1%;
+	transition: all 0.5s ease;
+}
+
+.show-chart-btn button:hover {
+	background-color: #526E86;
+	color: #fff;
+}
+
+#general-vote-chart {
+	position: relative;
+	animation: fade-in 2s ease;
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.all-projects {
+		width: 100%;
+		padding: 0 2.5%;
+	}
+
+	.project form:hover {
+		background-color: transparent;
+	}
+
+	.each-project:hover {
+		z-index: unset;
+		text-decoration: none;
+		transform: unset;
+		box-shadow: unset;
+	}
+
+}
+
+@media only screen and (max-height: 480px) and (max-width: 767px) {
+	.project .project-details {
+		align-self: unset;
+	}
+
+	.redirect-container {
+		margin-top: unset !important;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.new-project {
+		display: none;
+	}
+
+	.sponsor-vote-btn {
+		width: 95%;
+		font-size: 130%;
+		border-radius: 5px;
+	}
+
+	.all-projects {
+		width: 100%;
+		padding: 0; 
+		margin: 0;
+	}
+
+	.project-category-data,
+	.project-category-education,
+	.project-category-finance,
+	.project-category-top5,
+	.project-category-other {
+		font-size: 130%;
+		text-align: center;
+		margin: 5% 0 0;
+	}
+
+	.vote-remaining {
+		text-align: center;
+	}
+
+	.each-project {
+		background-color: transparent;
+		min-height: unset;
+		flex-direction: column;
+		padding: 2.5%;
+	}
+
+	.each-project::before {
+		display: none;
+	}
+
+	.each-project:hover {
+		z-index: unset;
+		text-decoration: unset;
+		color: #000;
+		transform: unset;
+		box-shadow: unset;
+	}
+
+	.project .attachment-icon {
+		display: none;
+	}
+
+	.project .project-title {
+		font-size: 120%;
+		position: relative;
+	}
+
+	.project .project-title span {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 2%;
+		opacity: 0.5;
+	}
+
+	.project .project-title span i {
+		transform: rotate(-45deg);
+	}
+
+	.project .project-description {
+		font-size: 100%;
+	}
+
+	.project .project-tech {
+		font-size: 100%;
+	}
+	
+	.project .voted-btn-area {
+		display: block;
+		width: 100%;
+		margin-top: 3%;
+	}
+
+	.project .voted-btn-area .voted-btn {
+		background-color: #000;
+		color: #fff;
+		margin: 2%;
+		padding: 2%;
+		opacity: 0.4;
+		border-radius: 3px;
+	}
+
+	.project .project-tech .small-screen-voted-label {
+		display: inline;
+		background-color: #000;
+		color: #fff;
+		padding: 2%;
+		font-size: 80%;
+		margin-left: 2%;
+		opacity: 0.4;
+	}
+
+	.project .each-project~.each-project::after {
+		display: none;
+	}
+
+	.project form {
+		width: 100%;
+		max-width: unset;
+	    margin-top: 3%;
+	}
+
+	.project form::before {
+		display: none;
+	}
+
+	.project form:hover {
+		background-color: transparent;
+	}
+
+	.project form .vote-btn {
+		background-color: #80BC40;
+		color: #fff;
+		padding: 2%;
+		font-weight: bold;
+		margin: 2%;
+		border-radius: 3px;
+	}
+
+	.redirect-container {
+		margin-top: -50%;
+	}
+}

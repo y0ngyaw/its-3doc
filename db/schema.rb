@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410122802) do
+ActiveRecord::Schema.define(version: 20180417021220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20180410122802) do
     t.datetime "updated_at", null: false
     t.string "remember_digest"
     t.boolean "admin", default: false
+    t.boolean "sponsor", default: false
+    t.boolean "vote", default: true
   end
 
   create_table "pendings", force: :cascade do |t|
@@ -58,7 +60,24 @@ ActiveRecord::Schema.define(version: 20180410122802) do
     t.datetime "updated_at", null: false
     t.integer "theme", default: 1
     t.string "tech", limit: 30
+    t.boolean "top5", default: false
+    t.string "documentation_file_name"
+    t.string "documentation_content_type"
+    t.integer "documentation_file_size"
+    t.datetime "documentation_updated_at"
+    t.integer "sp_marks", default: 0
     t.index ["participant_id"], name: "index_proposals_on_participant_id"
+  end
+
+  create_table "sponsor_votes", force: :cascade do |t|
+    t.integer "first_place"
+    t.integer "second_place"
+    t.integer "third_place"
+    t.integer "fourth_place"
+    t.integer "fifth_place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sponsor_id"
   end
 
   create_table "sponsors", force: :cascade do |t|
@@ -80,9 +99,20 @@ ActiveRecord::Schema.define(version: 20180410122802) do
     t.index ["proposal_id"], name: "index_team_members_on_proposal_id"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "participant_id"
+    t.bigint "proposal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participant_id"], name: "index_votes_on_participant_id"
+    t.index ["proposal_id"], name: "index_votes_on_proposal_id"
+  end
+
   add_foreign_key "pendings", "participants"
   add_foreign_key "pendings", "proposals"
   add_foreign_key "proposals", "participants"
   add_foreign_key "team_members", "participants"
   add_foreign_key "team_members", "proposals"
+  add_foreign_key "votes", "participants"
+  add_foreign_key "votes", "proposals"
 end

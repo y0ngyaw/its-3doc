@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_place: 1
+  second_place: 1
+  third_place: 1
+  fourth_place: 1
+  fifth_place: 1
+
+two:
+  first_place: 1
+  second_place: 1
+  third_place: 1
+  fourth_place: 1
+  fifth_place: 1

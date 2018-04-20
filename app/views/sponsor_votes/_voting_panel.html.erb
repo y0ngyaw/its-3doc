@@ -1,0 +1,29 @@
+<div class="vote-container" id="vote-container">
+	<div class="vote-panel">
+		<%= button_tag(class: 'close-btn', id: 'close-btn') do %>
+			<%= material_icon.clear %>
+		<% end %>
+
+		<div class="vote-title">
+			Vote
+		</div>
+
+		<div class="vote-description">
+			Drag and drop the projects below
+		</div>
+
+		<div class="proposals-top5" id="proposals-top5" data-url="<%= sponsor_votes_path %>">
+			<% @proposals_top5.each do |p| %>
+				<div class="p-top5-title" id="<%= dom_id(p) %>">
+					<%= p.title %>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="done-btn">
+			<%= button_tag do %>
+				Done
+			<% end %>
+		</div>
+	</div>
+</div>

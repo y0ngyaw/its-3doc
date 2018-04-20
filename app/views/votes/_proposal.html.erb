@@ -1,0 +1,47 @@
+<%= link_to proposal.documentation.url, target: '_blank', class: "each-project #{'voted' if voted?(proposal.id)}" do %>
+	<div class="image-wrapper">
+		<% if proposal.theme == 1 %>
+			<%= image_tag "dataicon.png", class: "icon" %>
+		<% elsif proposal.theme == 2 %>
+			<%= image_tag "educationicon.png", class: "icon" %>
+		<% elsif proposal.theme == 3 %>
+			<%= image_tag "financeicon.png", class: "icon" %>
+		<% end %>
+	</div>
+	
+	<div class="project-details">
+		<div class="project-title">
+			<%= proposal.title %>
+			<span><%= material_icon.link %></span>
+		</div>
+
+		<div class="project-description">
+			<%= proposal.description %>
+		</div>
+
+		<div class="project-team-member">
+			<span class="project-team">Team: </span><%= proposal.participant.name %>(leader) 
+			<% proposal.team_members.each do |tm| %>
+				<%= tm.participant.name %> 
+			<% end %>
+		</div>
+
+		<div class="project-tech">
+			<span class="project-tech-applied">Technology Applied: </span><%= proposal.tech %>
+		</div>
+	</div>
+
+	<% if proposal.top5 && eligible_to_vote?(proposal.id) && !current_participant.sponsor%>
+		<% unless voted?(proposal.id) %>
+			<%= button_to votes_path, params: { id: proposal.id }, class: 'vote-btn' do %>
+				<span>Vote</span>
+			<% end %>
+		<% else %>
+			<div class="voted-btn-area">
+				<div class="voted-btn">
+					Voted
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+<% end %>

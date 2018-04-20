@@ -60,6 +60,11 @@
 						<% end %>
 					</div>
 				</div>
+
+				<div class="new-proposal-row">
+					<%= f.label :documentation, class: 'new-proposal-label' %>
+					<%= f.file_field :documentation, class: 'new-proposal-file-upload' %>
+				</div>
 				
 				<%= f.submit 'Propose', class: 'p-btn disabled-btn' %>
 				<%= link_to "Need some ideas?", asset_path("sample_idea_list.pdf"), class: 'idea-link', target: :_blank %>

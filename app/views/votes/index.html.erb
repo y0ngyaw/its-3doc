@@ -1,0 +1,43 @@
+<div class="body-container">
+	<div class="all-projects">
+		<div class="category-wrapper">
+			<div class="project-category-top5">
+				Top Five Projects
+			</div>
+			
+			<% unless current_participant.sponsor %>
+				<div class="vote-remaining">
+					Vote Remaining: <%= pluralize(vote_remaining, 'vote', 'votes') %>
+				</div>
+			<% end %>
+			
+			<% if current_participant.sponsor %>
+				<div class="sponsor-vote-btn-wrapper">
+					<%= button_to "Vote Now!", new_sponsor_vote_path, method: :get, remote: true, class: 'sponsor-vote-btn' %>
+				</div>
+			<% end %>
+			
+			<div class="project">
+				<% @proposals.each do |p| %>
+					<% if p.top5 %>
+						<%= render 'proposal', proposal: p %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="category-wrapper">
+			<div class="project-category-other">
+				Other Projects
+			</div>
+			
+			<div class="project">
+				<% @proposals.each do |p| %>
+					<% unless p.top5 %>
+						<%= render 'proposal', proposal: p %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

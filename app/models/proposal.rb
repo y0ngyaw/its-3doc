@@ -6,6 +6,8 @@ class Proposal < ApplicationRecord
   validates :theme, presence: true, numericality: { only_integer: true }
   has_many :pendings, dependent: :destroy
   has_many :team_members
+  has_many :votes
+  has_attached_file :documentation
 
   def has_member?
   	self.team_members.count > 0

@@ -7,6 +7,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 1000;
+	overflow: auto;
 	-webkit-animation: background-darken 0.3s ease-in forwards;
     animation: background-darken 0.3s ease-in forwards;
 }
@@ -20,7 +21,7 @@
 .edit-proposal-panel {
 	display: block;
     width: 55%;
-    margin-top: 5%;
+    margin: 5% auto;
     background-color: #fff;
     border-radius: 5px;
     opacity: 0;
@@ -88,6 +89,24 @@
     border-radius: 3px;
 }
 
+.edit-proposal-filename {
+	display: inline-block;
+    width: 60%;
+    text-align: left;
+    float: left;
+    margin-left: 5%;
+    margin-top: 3px;
+}
+
+.edit-proposal-file-upload, 
+.new-proposal-file-upload {
+	display: inline-block;
+    width: 60%;
+    text-align: left;
+    float: left;
+    margin: 2px 5%;
+}
+
 .new-proposal-row,
 .edit-proposal-row {
 	margin: 3% 0;
@@ -116,7 +135,7 @@
 .p-btn,
 .delete-btn {
 	background-color: transparent;
-	width: 25%;
+	width: 35%;
 	padding: 1%;
 	margin: 0 2.5%;
 	font-weight: bold;
@@ -124,7 +143,6 @@
 	-webkit-transition: background-color 0.5s ease;
 	-o-transition: background-color 0.5s ease;
 	transition: background-color 0.5s ease;
-	border-radius: 3px;
 }
 
 .disabled-btn {
@@ -264,6 +282,10 @@
 		width: 100%;
 		margin: 2% 0;
 		font-size: 115%;
+	}
+
+	.edit-proposal-file-upload, .new-proposal-file-upload {
+	    margin: 1% 0 2% 5%;
 	}
 
 	.word-remain {

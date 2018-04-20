@@ -1,9 +1,10 @@
 class ProposalsController < ApplicationController
 	include SessionsHelper
 	include ProposalsHelper
-	before_action :logged_in_participant, only: [:index, :new, :create, :edit, :update, :destroy]
+	before_action :logged_in_participant, only: [:index, :new, :create, :edit, :update, :destroy, :top5]
 	before_action :no_proposal, only: [:new, :create]
 	before_action :correct_participant, only: [:edit, :update, :destroy]
+	before_action :admin_only, only: [:top5]
 
 	def new
 		if eligible_to_propose_topic?
@@ -28,7 +29,7 @@ class ProposalsController < ApplicationController
 	end 
 
 	def index
-		@proposals = Proposal.eager_load(:team_members, :pendings) 
+		@proposals = Proposal.eager_load(:team_members, :pendings).order(:theme, :title) 
 
 		if has_proposal?
 			@pending_lists = current_participant.proposal.pendings.eager_load(:participant, :proposal)
@@ -68,6 +69,16 @@ class ProposalsController < ApplicationController
 		end 
 	end 
 
+	def top5
+		@proposal = Proposal.find(params[:id])
+		@proposal.update_attribute(:top5, true)
+		@proposal.participant.update_attribute(:vote, false)
+		@proposal.team_members.each do |tm|
+			tm.participant.update_attribute(:vote, false)
+		end 
+		redirect_to participants_path
+	end 
+
 	private 
 		def proposal_params
 			params.require(:proposal).permit(:title, :description, :tech, :theme)
@@ -79,6 +90,10 @@ class ProposalsController < ApplicationController
 
 		def correct_participant
 			redirect_to proposals_path unless current_participant.proposal.id.to_s == params[:id]
+		end 
+
+		def admin_only
+			redirect_to proposals_path unless current_participant.admin 
 		end 
 		
 end

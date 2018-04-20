@@ -12,7 +12,14 @@
 
   <body class="main-page-body">
   	<div class="navbar">
-      <button type="button" class="small-screen-btn" id="small-screen-btn"><%= material_icon.dashboard %></span></button>
+      <% if voting_session? %>
+        <%= link_to votes_path, class: 'small-screen-btn' do %>
+          <%= material_icon.local_offer %>
+        <% end %>
+      <% else %>
+        <button type="button" class="small-screen-btn" id="small-screen-btn"><%= material_icon.dashboard %></button>
+      <% end %>
+      
       <%= link_to "http://www.3daysofcode.org" do %>
 	     <%= image_tag "3doc_logo.png", alt: "3 Days of Code", class: "navbar-logo-img" %>
       <% end %>
@@ -23,13 +30,15 @@
             <%= material_icon.exit_to_app %><div class="logout-word">Logout</div>
           <% end  %>
           
-          <% if current_participant.admin %>
-            <%= button_to new_participant_path, method: :get, remote: true, class: 'new-btn' do %>
-              <%= material_icon.account_box %></span><div class="new-participant-word">New <span class="half-word">Participant</span></div>
-            <% end %>
-            
+          <% if current_participant.admin %>        
             <%= button_to participants_path, method: :get, class: 'all-participant-btn' do %>
               <%= material_icon.list %></span><div class="all-participant-word">All <span class="half-word">Participants</span></div>
+            <% end %>
+          <% end %>
+          
+          <% if voting_session? %>
+            <%= button_to votes_path, method: :get, class: 'voting-session-btn' do %>
+              <%= material_icon.local_offer %></span><div class="voting-session-word">Voting</div>
             <% end %>
           <% end %>
           

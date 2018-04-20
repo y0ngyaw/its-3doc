@@ -8,6 +8,10 @@
 				<div class="back-main-page">
 					<%= link_to "Back", proposals_path, class: 'back-main-page-link' %>
 				</div>
+
+				<div class="new-participant">
+					<%= link_to "New Participant", new_participant_path, method: :get, remote: true, class: 'new-proposal-link' %>
+				</div>
 			</div>
 
 			<div class="all-participant-row all-participant-header">
@@ -61,33 +65,41 @@
 		</div>
 
 		<div class="all-team panel-shadow">
-			<div class="all-team-title">
-				All Teams and Team Members
+			<div class="all-team-title-row">
+				<div class="all-team-title">
+					All Teams and Team Members
+				</div>
+
+				<div class="result">
+					<%= link_to "Result", results_votes_path, class: "result-link" %>
+				</div>
 			</div>
 
 			<% count = 1 %>
-			<% @participants.each do |participant| %>
-				<% if !participant.proposal.nil? %>
-					<div class="team">
-						<div class="all-team-count">
-							<%= count %>
-						</div>
-						<div class="all-team-proposal-title">
-							Title: <%= participant.proposal.title %>
-						</div>
-						<div class="all-team-leader-name">
-							Leader: <%= participant.name %>
-						</div>
-
-						<% participant.proposal.team_members.each do |tm| %>
-							<div class="all-team-member-name">
-								Member: <%= tm.participant.name %>
-							</div>
-						<% end %>
-
-						<% count = count + 1 %>
+			<% @proposals.each do |proposal| %>
+				<div class="team">
+					<div class="all-team-count">
+						<%= count %>
 					</div>
-				<% end %>
+					<div class="all-team-proposal-title">
+						Title: <%= proposal.title %>
+					</div>
+					<div class="all-team-leader-name">
+						Leader: <%= proposal.participant.name %>
+					</div>
+
+					<% proposal.team_members.each do |tm| %>
+						<div class="all-team-member-name">
+							Member: <%= tm.participant.name %>
+						</div>
+					<% end %>
+					
+					<% unless proposal.top5 %>
+						<%= button_to "Top 5 Team", top5_proposal_path(proposal.id), class: 'top5-btn' %>
+					<% end %>
+
+					<% count = count + 1 %>
+				</div>
 			<% end %>
 		</div>
 	</div>

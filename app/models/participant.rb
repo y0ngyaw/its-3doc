@@ -8,6 +8,8 @@ class Participant < ApplicationRecord
     has_one :proposal, dependent: :destroy
     has_many :pendings
     has_one :team_member
+    has_many :votes
+    has_one :sponsor_vote, foreign_key: "sponsor_id"
     attr_accessor :remember_token
 
     def Participant.digest token 

@@ -1,0 +1,11 @@
+$(".show-chart").fadeOut(2000, function() {
+	$(this).remove();
+	$(".chart").append("<div class='chart-div' >");
+
+	setTimeout(function() {
+		$(".chart-div").fadeOut(1000, function() {
+			$(".chart").append('<%= escape_javascript(render partial: "votes/result_chart") %>');
+			$(".vote-result").append('<div class="vote-result-header">Sponsor Votes Result</div>');
+		});
+	}, 2000);
+});

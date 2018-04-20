@@ -1,7 +1,7 @@
 .edit-participant-container,
 .new-participant-container {
 	display: block;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -73,12 +73,27 @@
 	margin: 3% 0;
 }
 
+.edit-participant-row .checkbox, 
+.new-participant-row .checkbox {
+	display: inline-block;
+	margin-left: 30%;
+}
+
+.edit-participant-row .sponsor-label,
+.new-participant-row .sponsor-label {
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	margin-left: 1.5%;
+	float: left;
+}
+
 .update-btn,
 .create-btn,
 .c-btn {
 	font-size: 100%;
 	background-color: transparent;
-	width: 25%;
+	width: 35%;
 	padding: 1%;
 	font-weight: bold;
 	font-size: 120%;

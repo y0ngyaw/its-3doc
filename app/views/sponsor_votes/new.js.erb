@@ -1,0 +1,36 @@
+$('body').append("<%= escape_javascript(render partial: 'sponsor_votes/voting_panel') %>");
+
+$("#proposals-top5").sortable({
+	update: function(e, ui) {
+		Rails.ajax({
+			url: $(this).data("url"),
+			type: "POST",
+			data: $(this).sortable('serialize')
+		});
+	}
+});
+
+$('#vote-container').on('click', function(e) {
+	  if (e.target !== this)
+	    return;
+	  $(this).fadeOut(500, function() {
+	  	$(this).remove();
+	  });
+});
+
+$('#close-btn').on('click', function(e){
+	$('#vote-container').fadeOut(500, function() {
+	  	$('#vote-container').remove();
+	});
+});
+
+$('.done-btn button').on('click', function(e){
+	Rails.ajax({
+		url: $("#proposals-top5").data("url"),
+		type: "POST",
+		data: $("#proposals-top5").sortable('serialize')
+	});
+	$('#vote-container').fadeOut(500, function() {
+	  	$('#vote-container').remove();
+	});
+});

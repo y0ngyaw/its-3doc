@@ -13,8 +13,15 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
+//= require jquery-ui
+//= require jquery.ui.touch-punch
+//= require jquery-ui/widget 
+//= require jquery-ui/widgets/mouse
+//= require jquery-ui/widgets/sortable
 //= require bootstrap-sprockets
 //= require sweetalert2
 //= require sweet-alert2-rails
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 

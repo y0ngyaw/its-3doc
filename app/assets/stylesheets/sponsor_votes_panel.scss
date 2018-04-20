@@ -1,0 +1,148 @@
+.vote-container {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	-webkit-animation: background-darken 0.3s ease-in forwards;
+    animation: background-darken 0.3s ease-in forwards;
+}
+
+@keyframes background-darken {
+	from { background-color: rgba(0,0,0,0); }
+	to { background-color: rgba(0,0,0,0.7); }
+}
+
+.vote-panel {
+	display: block;
+    width: 55%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    -webkit-animation: show-panel 0.5s ease-in forwards;
+            animation: show-panel 0.5s ease-in forwards;
+    -webkit-box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.5), 0 4px 50px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.5), 0 4px 50px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes show-panel {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.vote-title {
+	font-size: 200%;
+    font-family: 'Lato',sans-serif;
+    margin: 5% 0 0;
+}
+
+.vote-description {
+	font-size: 120%;
+	font-family: 'Lato',sans-serif;
+}
+
+.proposals-top5 {
+	margin: 3% 10%;
+	overflow: visible;
+	transition: all 0.5s ease
+}
+
+.proposals-top5 .p-top5-title {
+	background-color: #E9E9E9;
+	padding: 2%;
+	font-size: 125%;
+	position: relative;
+	max-height: 70px;
+	transition: background-color 0.5s ease;
+}
+
+.proposals-top5 .p-top5-title:hover {
+	background-color: #D1D1D1;
+}
+
+.proposals-top5 .p-top5-title~.p-top5-title::before {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	top: 0;
+	left: 0;
+	border-top: 1px solid #BCC0C9;	
+}
+
+.done-btn button {
+	padding: 0.5% 5%;
+	background-color: transparent;
+	border: 1px solid #526E86;
+	color: #526E86;
+	margin: 0 0 3%;
+	transition: all 0.5s ease;
+}
+
+.done-btn button:hover {
+	background-color: #526E86;
+	color: #fff;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.vote-panel {
+		width: 70%;
+	}
+}
+
+@media only screen and (max-height: 480px) and (max-width: 767px) {
+	.vote-container {
+		overflow-y: scroll;
+	}
+
+	.vote-container .vote-panel {
+		top: 0;
+		left: 0;
+		right: 0;
+		transform: unset;
+		margin: 5% auto;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.vote-panel {
+		width: 95%;
+	}
+	
+	.vote-panel .close-btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	.vote-description {
+		font-size: 100%;
+	}
+
+	.proposals-top5 {
+		margin: 5%;
+	}
+
+	.proposals-top5 .p-top5-title {
+		font-size: 110%;
+		padding: 3% 2%;
+	}
+
+	.proposals-top5 .p-top5-title {
+		background-color: #E9E9E9;
+	}
+
+	.done-btn button {
+		padding: 1% 15%;
+		background-color: #526E86;
+		color: #fff;
+	    margin: 0 0 5%;
+	}
+}
