@@ -1,18 +1,16 @@
 <div class="body-container">
 	<div class="vote-result">
-		<div class="vote-result-header">
+		<div class="vote-result-header fade-in-initial-animation">
 			General Votes Result
 		</div>
 
 		<div class="chart">
 			<div class="show-chart">
-				<div class="show-chart-para">
+				<div class="show-chart-para fade-in-initial-animation">
 					The result is ready. Let's see how it looks.
 				</div>
-				<div class="show-chart-btn">
-					<%= button_to get_general_result_votes_path, method: :get, remote: true, class: 'g-result-btn' do%>
-						Generate Result
-					<% end %>
+				<div class="show-chart-btn fade-in-initial-animation">
+					<%= button_to "Generate Result", get_general_result_votes_path, method: :get, remote: true, class: 'g-result-btn' %>
 				</div>
 			</div>	
 		</div>

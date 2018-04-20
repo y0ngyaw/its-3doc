@@ -1,0 +1,4 @@
+$(".show-chart").fadeOut(1500, function() {
+	$(this).remove();
+	$(".chart:last").append('<%= escape_javascript(render partial: "votes/sponsor_result_list") %>');
+});

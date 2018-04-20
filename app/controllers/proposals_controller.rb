@@ -81,7 +81,7 @@ class ProposalsController < ApplicationController
 
 	private 
 		def proposal_params
-			params.require(:proposal).permit(:title, :description, :tech, :theme)
+			params.require(:proposal).permit(:title, :description, :tech, :theme, :documentation)
 		end 
 
 		def no_proposal

@@ -1,0 +1,24 @@
+<div class="project">
+	<% last_marks = 0 %>
+	<% i = 0 %>
+	<% @sponsor_vote_results.each do |p| %>
+		<% if same_marks_checking(p.sp_marks, last_marks) %>
+			<div class="project-result result-<%= i %>">
+		<% else %>
+			<div class="project-result result-<%= i+1 %>">
+			<% i = i + 1 %>
+		<% end %>
+			<div class="result-title">
+				<%= p.title %>
+			</div>
+
+			<div class="result-team-member">
+				<span class="result-team">Team: </span><%= p.participant.name %>(leader) 
+				<% p.team_members.each do |tm| %>
+					<%= tm.participant.name %> 
+				<% end %>
+			</div>
+		</div>
+		<% last_marks = p.sp_marks %>
+	<% end %>
+</div>

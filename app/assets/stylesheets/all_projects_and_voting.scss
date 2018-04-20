@@ -245,11 +245,17 @@
 	margin: 2% 8%;
 }
 
+.vote-result .vote-result-header~.vote-result-header {
+	margin-top: 10%;
+}
+
 .project-result {
 	background-color: #F0F0F0;
     padding: 2%;
+    width: 80%;
     position: relative;
-    margin: 0 8%;
+    opacity: 0;
+    animation: fade-in 2s ease forwards;
 }
 
 .project .project-result~.project-result::before {
@@ -279,10 +285,20 @@
 
 .project .result-2 {
 	background-color: #D0D0D0;
+	animation-delay: 4s;
 }
 
 .project .result-3 {
 	background-color: #D3BC9A;
+	animation-delay: 8s;
+}
+
+.project .result-4 {
+	animation-delay: 12s;
+}
+
+.project .result-5 {
+	animation-delay: 16s;
 }
 
 .redirect-container {
@@ -326,10 +342,10 @@
 
 .show-chart-para {
 	font-size: 150%;
-	opacity: 0.6;
+	color: #A2A2A2;
 }
 
-.show-chart-btn button {
+.g-result-btn {
 	background-color: transparent;
 	border: 1px solid #526E86;
 	color: #526E86;
@@ -339,13 +355,17 @@
 	transition: all 0.5s ease;
 }
 
-.show-chart-btn button:hover {
+.g-result-btn:hover {
 	background-color: #526E86;
 	color: #fff;
 }
 
 #general-vote-chart {
 	position: relative;
+	animation: fade-in 2s ease;
+}
+
+.fade-in-initial-animation {
 	animation: fade-in 2s ease;
 }
 

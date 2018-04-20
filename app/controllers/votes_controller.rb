@@ -2,9 +2,9 @@ class VotesController < ApplicationController
 	layout "voting_page_layout"
 	include VotesHelper
 	include SponsorVotesHelper
-	before_action :logged_in_participant, only: [:new, :create, :index, :results, :general_results]
-	before_action :voting_session_only, only: [:new, :create, :index, :results, :general_results]
-	before_action :admin_only, only: [:results, :general_results]
+	before_action :logged_in_participant, only: [:new, :create, :index, :results, :general_results, :get_general_result, :get_sponsor_result]
+	before_action :voting_session_only, only: [:new, :create, :index, :results, :general_results, :get_general_result, :get_sponsor_result]
+	before_action :admin_only, only: [:results, :general_results, :get_general_result, :get_sponsor_result]
 
 	def new
 	end 
@@ -26,7 +26,6 @@ class VotesController < ApplicationController
 		if Proposal.where(top5: true).first.sp_marks == 0
 			calc_sponsor_vote
 		end 
-		@sponsor_vote_results = Proposal.where(top5: true).order(sp_marks: :desc)
 	end 
 
 	def general_results
@@ -46,6 +45,8 @@ class VotesController < ApplicationController
 	end 
 
 	def get_sponsor_result
+		@sponsor_vote_results = Proposal.where(top5: true).order(sp_marks: :desc)
+		
 		respond_to do |format|
 			format.js
 			format.html

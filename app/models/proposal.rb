@@ -8,6 +8,8 @@ class Proposal < ApplicationRecord
   has_many :team_members
   has_many :votes
   has_attached_file :documentation
+  VALID_FILE_NAME = /pdf\z/
+  validates_attachment_file_name :documentation, matches: VALID_FILE_NAME
 
   def has_member?
   	self.team_members.count > 0

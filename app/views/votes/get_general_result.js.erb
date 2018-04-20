@@ -1,11 +1,17 @@
-$(".show-chart").fadeOut(2000, function() {
+$(".show-chart").fadeOut(1500, function() {
 	$(this).remove();
 	$(".chart").append("<div class='chart-div' >");
 
 	setTimeout(function() {
 		$(".chart-div").fadeOut(1000, function() {
 			$(".chart").append('<%= escape_javascript(render partial: "votes/result_chart") %>');
-			$(".vote-result").append('<div class="vote-result-header">Sponsor Votes Result</div>');
+			setTimeout(function() {
+				$(".vote-result").append('<div class="vote-result-header fade-in-initial-animation">Sponsor Votes Result</div>');
+				$(".vote-result").append('<div class="chart"></div>');
+				$(".chart:nth-child(4)").append('<div class="show-chart"></div>');
+				$(".show-chart").append('<div class="show-chart-para fade-in-initial-animation">The result is ready. Let\'s see how it looks.</div>');
+				$(".show-chart").append('<div class="show-chart-btn fade-in-initial-animation"><%= escape_javascript button_to("Generate Result", get_sponsor_result_votes_path, method: :get, remote: true, class: "g-result-btn") %></div>');
+			}, 12000);
 		});
 	}, 2000);
 });
