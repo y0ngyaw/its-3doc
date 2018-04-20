@@ -24,7 +24,6 @@ module VotesHelper
 	end 
 
 	def voting_session?
-		# Time.now > Time.new(2018, 4, 22, 15, 00)
-		true
+		Time.now > Time.new(2018, 4, 22, 15, 00)
 	end 
 end
