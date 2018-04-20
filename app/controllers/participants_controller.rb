@@ -14,7 +14,11 @@ class ParticipantsController < ApplicationController
 		@participant = Participant.new(participant_params)
 		@password = @participant.generate_password
 		if @participant.save
-			ParticipantMailer.participant_created(@participant, @password).deliver_later
+			if @participant.sponsor
+				ParticipantMailer.sponsor_created_email(@participant, @password).deliver_later
+			else 
+				ParticipantMailer.participant_created(@participant, @password).deliver_later
+			end
 			redirect_to participants_path
 		else 
 			flash.now[:error] = "Failed to create a new participant"

@@ -46,4 +46,10 @@ class ParticipantMailer < ApplicationMailer
 		@proposal = team_member.proposal
 		mail to: @participant.email, subject: "Team Stay - 3 Days of Code Hackathon"
 	end
+
+	def sponsor_created_email(sponsor, password)
+		@sponsor = sponsor
+		@password = password
+		mail to: @sponsor.email, subject: "Sponsors' Platform - 3 Days of Code Hackathon"
+	end 
 end

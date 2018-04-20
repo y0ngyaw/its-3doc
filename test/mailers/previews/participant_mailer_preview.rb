@@ -31,4 +31,8 @@ class ParticipantMailerPreview < ActionMailer::Preview
 	def stay_email
 		ParticipantMailer.stay_email(TeamMember.first)
 	end 
+
+	def sponsor_created_email
+		ParticipantMailer.sponsor_created_email(Participant.first, "lalala")
+	end
 end
