@@ -12,7 +12,7 @@ module VotesHelper
 	end 
 
 	def eligible_to_vote? id 
-		current_participant.vote? && !reach_voting_limit? && top_five_proposal?(id)
+		current_participant.vote? && !reach_voting_limit? && top_five_proposal?(id) && !voted?(id)
 	end 
 
 	def voted? id
