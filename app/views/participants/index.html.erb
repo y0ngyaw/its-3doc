@@ -102,7 +102,9 @@
 						</div>
 					<% end %>
 					
-					<% unless proposal.top5 %>
+					<% if proposal.top5 %>
+						<%= button_to "Not Top 5 Team", reverse_top5_proposal_path(proposal.id), class: 'reverse-top5-btn' %>
+					<% else %>
 						<%= button_to "Top 5 Team", top5_proposal_path(proposal.id), class: 'top5-btn' %>
 					<% end %>
 

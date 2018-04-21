@@ -32,6 +32,12 @@
 				
 				<%= f.submit 'Update', class: 'c-btn update-btn' %>
 			<% end %>
+
+			<% if current_participant.admin %>
+				<div class="delete-btn-group">
+					<%= button_to "Delete This Account", participant_path(@participant), method: :delete,class: 'delete-btn' %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

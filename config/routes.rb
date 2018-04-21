@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :proposals do 
       member do 
         post :top5
+        post :reverse_top5
       end 
     end
     resources :pendings, only: [:create, :destroy]

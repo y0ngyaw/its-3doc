@@ -1,10 +1,10 @@
 class ProposalsController < ApplicationController
 	include SessionsHelper
 	include ProposalsHelper
-	before_action :logged_in_participant, only: [:index, :new, :create, :edit, :update, :destroy, :top5]
+	before_action :logged_in_participant, only: [:index, :new, :create, :edit, :update, :destroy, :top5, :reverse_top5]
 	before_action :no_proposal, only: [:new, :create]
 	before_action :correct_participant, only: [:edit, :update, :destroy]
-	before_action :admin_only, only: [:top5]
+	before_action :admin_only, only: [:top5, :reverse_top5]
 
 	def new
 		if eligible_to_propose_topic?
@@ -75,7 +75,19 @@ class ProposalsController < ApplicationController
 		@proposal.participant.update_attribute(:vote, false)
 		@proposal.team_members.each do |tm|
 			tm.participant.update_attribute(:vote, false)
+		end
+
+		redirect_to participants_path
+	end 
+
+	def reverse_top5
+		@proposal = Proposal.find(params[:id])
+		@proposal.update_attribute(:top5, false)
+		@proposal.participant.update_attribute(:vote, true)
+		@proposal.team_members.each do |tm|
+			tm.participant.update_attribute(:vote, true)
 		end 
+
 		redirect_to participants_path
 	end 
 

@@ -1,5 +1,6 @@
 class ParticipantsController < ApplicationController
-	before_action :admin_only, only: [:new, :create, :edit, :update, :index]
+	before_action :logged_in_participant, only: [:new, :create, :edit, :update, :index, :destroy]
+	before_action :admin_only, only: [:new, :create, :edit, :update, :index, :destroy]
 	
 	def new
 		@participant = Participant.new
@@ -47,6 +48,15 @@ class ParticipantsController < ApplicationController
 		else 
 			redirect_to participants_path
 		end 
+	end 
+
+	def destroy
+		if Participant.exists?(params[:id]) 
+			participant = Participant.find(params[:id])
+			participant.destroy
+		end 
+
+		redirect_to participants_path
 	end 
 
 	private

@@ -6,10 +6,10 @@ class Participant < ApplicationRecord
     has_secure_password
     validates :password_digest, presence: true
     has_one :proposal, dependent: :destroy
-    has_many :pendings
+    has_many :pendings, dependent: :destroy
     has_one :team_member
-    has_many :votes
-    has_one :sponsor_vote, foreign_key: "sponsor_id"
+    has_many :votes, dependent: :destroy
+    has_one :sponsor_vote, foreign_key: "sponsor_id", dependent: :destroy
     attr_accessor :remember_token
 
     def Participant.digest token 

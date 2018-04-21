@@ -117,17 +117,31 @@
     padding: 1% 10%;
 }
 
-.top5-btn {
+.top5-btn,
+.reverse-top5-btn {
 	float: left;
 	background-color: transparent;
-	border: 1px solid #526E86;
 	padding: 0.5% 2%;
-	color: #526E86;
 	transition: all 0.5s ease;
+}
+
+.top5-btn {
+	border: 1px solid #526E86;
+	color: #526E86;
 }
 
 .top5-btn:hover {
 	background-color: #526E86;
+	color: #fff;
+}
+
+.reverse-top5-btn {
+	border: 1px solid #D75E53;
+	color: #D75E53;
+}	
+
+.reverse-top5-btn:hover {
+	background-color: #D75E53;
 	color: #fff;
 }
 
