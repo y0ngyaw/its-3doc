@@ -1,5 +1,7 @@
 class SponsorVotesController < ApplicationController
 	include VotesHelper
+
+	before_action :after_event, only: [:new, :create]
 	before_action :voting_session_only, only: [:new, :create]
 	before_action :sponsor_only, only: [:new, :create]
 	before_action :logged_in_participant, only: [:new, :create]

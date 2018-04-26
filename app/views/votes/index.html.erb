@@ -5,16 +5,20 @@
 				Top Five Projects
 			</div>
 			
-			<% unless current_participant.sponsor %>
-				<div class="vote-remaining">
-					Vote Remaining: <%= pluralize(vote_remaining, 'vote', 'votes') %>
-				</div>
-			<% end %>
+			<% unless after_event_view %>
+				<% unless current_participant.sponsor %>
+					<% if current_participant.vote == true %>
+						<div class="vote-remaining">
+							Vote Remaining: <%= pluralize(vote_remaining, 'vote', 'votes') %>
+						</div>
+					<% end %>
+				<% end %>
 			
-			<% if current_participant.sponsor %>
-				<div class="sponsor-vote-btn-wrapper">
-					<%= button_to "Vote Now!", new_sponsor_vote_path, method: :get, remote: true, class: 'sponsor-vote-btn' %>
-				</div>
+				<% if current_participant.sponsor %>
+					<div class="sponsor-vote-btn-wrapper">
+						<%= button_to "Vote Now!", new_sponsor_vote_path, method: :get, remote: true, class: 'sponsor-vote-btn' %>
+					</div>
+				<% end %>
 			<% end %>
 			
 			<div class="project">

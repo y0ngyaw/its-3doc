@@ -30,18 +30,20 @@
 			<span class="project-tech-applied">Technology Applied: </span><%= proposal.tech %>
 		</div>
 	</div>
-
-	<% if proposal.top5 && eligible_to_vote?(proposal.id) && !current_participant.sponsor%>
-		<% unless voted?(proposal.id) %>
-			<%= button_to votes_path, params: { id: proposal.id }, class: 'vote-btn' do %>
-				<span>Vote</span>
-			<% end %>
-		<% else %>
-			<div class="voted-btn-area">
-				<div class="voted-btn">
-					Voted
+	
+	<% unless after_event_view %>
+		<% if proposal.top5 && eligible_to_vote?(proposal.id) && !current_participant.sponsor%>
+			<% unless voted?(proposal.id) %>
+				<%= button_to votes_path, params: { id: proposal.id }, class: 'vote-btn' do %>
+					<span>Vote</span>
+				<% end %>
+			<% else %>
+				<div class="voted-btn-area">
+					<div class="voted-btn">
+						Voted
+					</div>
 				</div>
-			</div>
+			<% end %>
 		<% end %>
 	<% end %>
 <% end %>

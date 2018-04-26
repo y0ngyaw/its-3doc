@@ -8,5 +8,10 @@ class ApplicationController < ActionController::Base
   		redirect_to login_path
   	end 
   end 
-  
+
+
+  def after_event
+  	redirect_to votes_path
+  end 
+
 end

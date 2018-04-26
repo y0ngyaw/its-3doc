@@ -2,6 +2,7 @@ class TeamMembersController < ApplicationController
 	include PendingsHelper
 	include TeamMembersHelper
 	before_action :logged_in_participant, only: [:create, :destroy, :leave, :acknowledge, :stay]
+	before_action :after_event, only: [:create, :destroy, :leave, :acknowledge, :stay]
 	before_action :leader, only: [:create, :destroy]
 	before_action :member, only: [:leave]
 	before_action :verify_leader, only: [:acknowledge, :stay]

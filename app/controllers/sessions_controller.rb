@@ -16,12 +16,10 @@ class SessionsController < ApplicationController
 			params[:session][:remember_me] == '1' ? remember(participant) : forget(participant)
 
 			if participant.admin
-				redirect_to proposals_path
-			elsif participant.sponsor
+				redirect_to participants_path
+			else 
 				redirect_to votes_path
-			else
-				redirect_to proposals_path
-			end 
+			end
 		else 
 			flash[:error] = "Invalid email and/or password"
 			redirect_to root_path

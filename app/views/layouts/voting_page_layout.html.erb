@@ -12,9 +12,11 @@
 
   <body class="main-page-body">
     <div class="navbar">
-      <% if !current_participant.sponsor || current_participant.admin %>
-        <%= button_to proposals_path, method: :get, class: 'small-screen-btn' do %>
-          <%= material_icon.keyboard_backspace %>
+      <% unless after_event_view %>
+        <% if !current_participant.sponsor || current_participant.admin %>
+          <%= button_to proposals_path, method: :get, class: 'small-screen-btn' do %>
+            <%= material_icon.keyboard_backspace %>
+          <% end %>
         <% end %>
       <% end %>
       <%= link_to "http://www.3daysofcode.org" do %>
@@ -32,10 +34,12 @@
               <%= material_icon.list %></span><div class="all-participant-word">All <span class="half-word">Participants</span></div>
             <% end %>
           <% end %>
-
-          <% if !current_participant.sponsor || current_participant.admin %>
-            <%= button_to proposals_path, method: :get, class: 'propose-platform-btn' do %>
-              <%= material_icon.keyboard_backspace %></span><div class="propose-platform-word">Propose <span class="half-word">Platform</span></div>
+          
+          <% unless after_event_view %>
+            <% if !current_participant.sponsor || current_participant.admin %>
+              <%= button_to proposals_path, method: :get, class: 'propose-platform-btn' do %>
+                <%= material_icon.keyboard_backspace %></span><div class="propose-platform-word">Propose <span class="half-word">Platform</span></div>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
