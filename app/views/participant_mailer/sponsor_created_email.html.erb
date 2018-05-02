@@ -1,20 +1,19 @@
 <div class="wrapper">
   <%= image_tag "3doc_logo.png", size: "240x145", alt: "3 Days of Code"%>
   <h3>Hello <%= @sponsor.name %>,</h3><br>
-  <div>Thank you for supporting 3 Days of Code - Hackathon organized by IT Society of MMU Cyberjaya.</div><br>
+  <div>Thank you for supporting 3 Days of Code organized by IT Society of MMU Cyberjaya.</div><br>
 
-  <div>For your information, our committees have developed an online platform for you to preview participants' projects and vote for the <strong>top five project</strong> in this hackathon competition. This platform will be opened for sponsors access during the voting session on <strong>Sunday, 22 April 2018</strong>.</div><br>
+  <div>For your information, our committees have developed an online platform for you to preview participants' projects in this hackathon competition. </div><br>
 
   <div>You can access this <%= link_to "platform", "http://hackathon.3daysofcode.org/", target: :_blank %> with your username and password listed below:<br>
      Email  : <%= @sponsor.email %><br>
      Password  : <%= @password %></div><br>
   
-  <div>If there are any inquiries or difficulties you are having concerning the event, feel free to reach us through our 3 Days of Code page on <%= link_to "Facebook", "https://www.facebook.com/3DaysofCode/?ref=br_rs", target: :_blank %> and we will tend to you shortly.</div><br>
+  <div>If there are any inquiries or difficulties you are having concerning the event, feel free to reach us at <%= mail_to "itsoc.mmu@gmail.com" %> and we will tend to you shortly.</div><br>
   
   <div>Looking forward to seeing you and have a nice day ahead! </div>
   <br>
   <div>Sincerely, <br>
-  Committees of 3 Days of Code<br>
-  IT Society<br>
-  MMU Cyberjaya.</div>
+  3 Days of Code<br>
+  IT Society MMU Cyberjaya</div>
 </div>
