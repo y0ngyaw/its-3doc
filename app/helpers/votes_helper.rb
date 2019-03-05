@@ -22,9 +22,5 @@ module VotesHelper
 	def vote_remaining
 		2 - current_participant.votes.count
 	end 
-
-	def voting_session?
-		# Time.now > Time.new(2018, 4, 22, 15, 00)
-		true
-	end 
+	
 end

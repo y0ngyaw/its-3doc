@@ -2,7 +2,7 @@ class ProposalsController < ApplicationController
 	include SessionsHelper
 	include ProposalsHelper
 	before_action :logged_in_participant, only: [:index, :new, :create, :edit, :update, :destroy, :top5, :reverse_top5]
-	before_action :after_event, only: [:index, :new, :create, :edit, :update, :destroy]
+	before_action :voting_session, only: [:index, :new, :create, :edit, :update, :destroy]
 	before_action :no_proposal, only: [:new, :create]
 	before_action :correct_participant, only: [:edit, :update, :destroy]
 	before_action :admin_only, only: [:top5, :reverse_top5]
@@ -107,10 +107,6 @@ class ProposalsController < ApplicationController
 
 		def admin_only
 			redirect_to proposals_path unless current_participant.admin 
-		end 
-
-		def after_event
-			redirect_to votes_path
 		end 
 		
 end

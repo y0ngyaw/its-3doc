@@ -2,6 +2,7 @@ class VotesController < ApplicationController
 	layout "voting_page_layout"
 	include VotesHelper
 	include SponsorVotesHelper
+	include SessionsHelper
 	before_action :logged_in_participant, only: [:new, :create, :index, :results, :general_results, :votes_redirect, :get_general_result, :get_sponsor_result]
 	before_action :voting_session_only, only: [:new, :create, :index, :results, :general_results, :get_general_result, :get_sponsor_result]
 	before_action :after_event, only: [:new, :create]

@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 			if participant.admin
 				redirect_to participants_path
 			else 
-				redirect_to votes_path
+				redirect_to proposals_path
 			end
 		else 
 			flash[:error] = "Invalid email and/or password"

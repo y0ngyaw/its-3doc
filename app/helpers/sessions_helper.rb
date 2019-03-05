@@ -40,4 +40,8 @@ module SessionsHelper
 	def logged_in?
 		!current_participant.nil?
 	end 
+
+	def voting_session? 
+		ENV["VOTING_SESSION"] == "True"
+	end
 end

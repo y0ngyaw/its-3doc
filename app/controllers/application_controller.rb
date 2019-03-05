@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
   	end 
   end 
 
-
-  def after_event
-  	redirect_to votes_path
+  def voting_session
+  	if voting_session?
+      redirect_to votes_path
+    end 
   end 
 
 end
