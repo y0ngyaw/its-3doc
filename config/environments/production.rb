@@ -33,13 +33,13 @@ Rails.application.configure do
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = 'http://its-3doc-production-env.8fgpa9wwnj.ap-southeast-1.elasticbeanstalk.com'
+  config.action_controller.asset_host = 'http://its-3doc-test-env.7fsxpwwywp.ap-southeast-1.elasticbeanstalk.com'
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
   config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => 'http://its-3doc-production-env.8fgpa9wwnj.ap-southeast-1.elasticbeanstalk.com',
+      'Access-Control-Allow-Origin' => 'http://its-3doc-test-env.7fsxpwwywp.ap-southeast-1.elasticbeanstalk.com',
       'Access-Control-Request-Method' => '*'
   }
 
@@ -70,10 +70,10 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: ENV["GMAIL_USERNAME"]}
-  config.action_mailer.default_url_options = { host: 'its-3doc-production-env.8fgpa9wwnj.ap-southeast-1.elasticbeanstalk.com', protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'its-3doc-test-env.7fsxpwwywp.ap-southeast-1.elasticbeanstalk.com', protocol: 'http' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true  
-  config.action_mailer.asset_host = 'http://its-3doc-production-env.8fgpa9wwnj.ap-southeast-1.elasticbeanstalk.com'
+  config.action_mailer.asset_host = 'http://its-3doc-test-env.7fsxpwwywp.ap-southeast-1.elasticbeanstalk.com'
   config.action_mailer.smtp_settings = {
         :address              => 'smtp.gmail.com',
         :port                 => 587,
