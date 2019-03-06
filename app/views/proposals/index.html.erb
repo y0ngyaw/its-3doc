@@ -11,7 +11,7 @@
 				<div class="proposal">
 					<div class="image-wrapper">
 						<% if proposal.theme == 1 %>
-							<%= image_tag "dataicon.png", class: "theme-icon" %>
+							<%= image_tag "transporticon.png", class: "theme-icon" %>
 						<% elsif proposal.theme == 2 %>
 							<%= image_tag "educationicon.png", class: "theme-icon" %>
 						<% elsif proposal.theme == 3 %>
@@ -23,7 +23,7 @@
 							<%= proposal.title %>
 						</div>
 						<% if proposal.theme == 1 %>
-							<div class="proposal-theme-1">Theme: Data</div>
+							<div class="proposal-theme-1">Theme: Transport</div>
 						<% elsif proposal.theme == 2 %>
 							<div class="proposal-theme-2">Theme: Education</div>
 						<% elsif proposal.theme == 3 %>

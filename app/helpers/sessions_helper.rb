@@ -42,6 +42,10 @@ module SessionsHelper
 	end 
 
 	def voting_session? 
-		ENV["VOTING_SESSION"] == "True"
+		ENV["VOTING_SESSION"] == "true"
 	end
+
+	def after_event?
+		ENV['AFTER_EVENT'] == "true"
+	end 
 end

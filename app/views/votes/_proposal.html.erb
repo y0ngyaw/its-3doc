@@ -1,7 +1,7 @@
 <%= link_to proposal.documentation.url, target: '_blank', class: "each-project #{'voted' if voted?(proposal.id)}" do %>
 	<div class="image-wrapper">
 		<% if proposal.theme == 1 %>
-			<%= image_tag "dataicon.png", class: "icon" %>
+			<%= image_tag "transporticon.png", class: "icon" %>
 		<% elsif proposal.theme == 2 %>
 			<%= image_tag "educationicon.png", class: "icon" %>
 		<% elsif proposal.theme == 3 %>

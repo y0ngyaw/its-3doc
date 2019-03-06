@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
     end 
   end 
 
+  def after_event
+    if after_event?
+      redirect_to votes_path
+    end 
+  end 
+
 end

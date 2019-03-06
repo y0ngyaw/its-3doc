@@ -1,6 +1,7 @@
 class PendingsController < ApplicationController
 	include PendingsHelper
 	before_action :logged_in_participant, only: [:create, :destroy]
+	before_action :voting_session, only: [:create, :destroy]
 	before_action :after_event, only: [:create, :destroy]
 	before_action :correct_participant, only: [:destroy]
 	before_action :existing_proposal, only: [:create]

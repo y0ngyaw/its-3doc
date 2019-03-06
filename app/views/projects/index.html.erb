@@ -2,7 +2,7 @@
 	<div class="all-projects">
 		<div class="category-wrapper">
 			<div class="project-category-data">
-				Theme: Data
+				Theme: Transport
 				<% if current_sponsor.admin? %>
 					<%= link_to "New Project", new_project_path, remote: true, class: 'new-project' %>
 				<% end %>
@@ -13,7 +13,7 @@
 					<% if project.theme == 1 %>
 						<%= link_to project.documentation.url, target: '_blank', class: "each-project" do %>
 							<div class="image-wrapper">
-								<%= image_tag "dataicon.png", class: "icon" %>
+								<%= image_tag "transporticon.png", class: "icon" %>
 							</div>
 							
 							<div class="project-details">

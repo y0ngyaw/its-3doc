@@ -1,5 +1,5 @@
 module ApplicationHelper
 	def after_event_view 
-		true
+		ENV["AFTER_EVENT"] == "true"
 	end 
 end

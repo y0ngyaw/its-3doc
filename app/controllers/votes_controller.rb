@@ -4,8 +4,8 @@ class VotesController < ApplicationController
 	include SponsorVotesHelper
 	include SessionsHelper
 	before_action :logged_in_participant, only: [:new, :create, :index, :results, :general_results, :votes_redirect, :get_general_result, :get_sponsor_result]
-	before_action :voting_session_only, only: [:new, :create, :index, :results, :general_results, :get_general_result, :get_sponsor_result]
-	before_action :after_event, only: [:new, :create]
+	before_action :before_voting_session, only: [:new, :create, :index, :results, :general_results, :get_general_result, :get_sponsor_result]
+	before_action :after_event, only: [:new, :create, :votes_redirect]
 	before_action :admin_only, only: [:results, :general_results, :get_general_result, :get_sponsor_result]
 
 	def new
@@ -56,11 +56,15 @@ class VotesController < ApplicationController
 	end 
 
 	private 
-	def admin_only
-		redirect_to votes_path unless current_participant.admin
-	end 
+		def admin_only
+			redirect_to votes_path unless current_participant.admin
+		end 
 
-	def voting_session_only 
-		redirect_to votes_redirect_votes_path unless voting_session?
-	end  
-end
+		def before_voting_session 
+			redirect_to votes_redirect_votes_path if (!voting_session? && !after_event?)
+		end  
+
+		def after_event
+			redirect_to votes_path if after_event?
+		end 
+	end
